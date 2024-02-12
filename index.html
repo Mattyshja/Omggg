@@ -1,7 +1,48 @@
-<h2>¿Quieres ser mi San Valentín?</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>San Valentín</title>
+    <style>
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+            margin: 10px;
+        }
 
-<button class="button" id="yes" style="background-color: lightgreen; padding: 15px 30px;">Sí</button>
-<button class="button" id="no" style="background-color: lightcoral; padding: 15px 30px;">No</button>
+        .button:hover {background-color: #3e8e41}
+
+        .button:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+
+<div class="center">
+    <h2>¿Quieres ser mi San Valentín?</h2>
+
+    <button class="button" id="yes" style="background-color: lightgreen;">Sí</button>
+    <button class="button" id="no" style="background-color: lightcoral;">No</button>
+</div>
 
 <script>
     // Cuando el usuario hace clic en "Sí"
@@ -21,3 +62,6 @@
         this.style.top = Math.max(0, y) + 'px';
     });
 </script>
+
+</body>
+</html>
