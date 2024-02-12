@@ -90,8 +90,8 @@
         indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
 
         // Calcula una nueva posición para el botón
-        var x = Math.random() * (window.innerWidth - this.offsetWidth);
-        var y = Math.random() * (window.innerHeight - this.offsetHeight);
+        var x = Math.random() * (window.innerWidth * 0.5 - this.offsetWidth) + window.innerWidth * 0.25;
+        var y = Math.random() * (window.innerHeight * 0.5 - this.offsetHeight) + window.innerHeight * 0.25;
 
         // Asegura que el botón no salga de la ventana del navegador
         this.style.position = 'absolute';
