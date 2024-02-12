@@ -1,51 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>San Valentín</title>
-    <style>
-        .button {
-            display: inline-block;
-            padding: 20px 40px; /* Botones más grandes */
-            font-size: 25px; /* Texto de los botones más grande */
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 9px #999;
-        }
+<h2>¿Quieres ser</h2>
+<h2>mi San Valentín?</h2>
 
-        .button:hover {background-color: #3e8e41}
-
-        .button:active {
-            background-color: #3e8e41;
-            box-shadow: 0 5px #666;
-            transform: translateY(4px);
-        }
-
-        .center {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 80vh; /* Contenido ligeramente hacia arriba */
-            flex-direction: column;
-        }
-
-        h2 {
-            font-size: 30px; /* Texto del encabezado más grande */
-        }
-    </style>
-</head>
-<body>
-
-<div class="center">
-    <h2>¿Quieres ser mi San Valentín?</h2>
-
-    <button class="button" id="yes" style="background-color: lightgreen;">Sí</button>
-    <button class="button" id="no" style="background-color: lightcoral;">No</button>
-</div>
+<button class="button" id="yes" style="background-color: lightgreen; padding: 25px 50px;">Sí</button>
+<button class="button" id="no" style="background-color: lightcoral; padding: 25px 50px;">No</button>
 
 <script>
     // Cuando el usuario hace clic en "Sí"
@@ -53,7 +10,24 @@
         alert("Ush, eres mi novio, obvio tenías que decir que si 🙄 en fin, feliz 14 de febrero, teamo 🩷");
     });
 
+    // Palabras que aparecerán en el botón "No"
+    var palabras = ["Seguro?", "ish", "Y si te arrepientes?", "cállate", "maldito", "todos iguales", "di q sii", "YAAAA", "PIÉNSALO BIEN", "sorettete", "hdtm", "Ve cómo eres 💔", "yo que te quería tanto"];
+    var indiceAnterior = -1;
+
     // Cuando el usuario intenta hacer clic en "No"
+    document.getElementById("no").addEventListener("click", function() {
+        // Calcula un nuevo índice para las palabras
+        var nuevoIndice;
+        do {
+            nuevoIndice = Math.floor(Math.random() * palabras.length);
+        } while (nuevoIndice == indiceAnterior); // Asegura que la palabra no se repita seguida
+
+        // Cambia el texto del botón "No"
+        this.textContent = palabras[nuevoIndice];
+
+        indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
+    });
+
     document.getElementById("no").addEventListener("mouseover", function() {
         // Calcula una nueva posición para el botón
         var x = Math.random() * (window.innerWidth - this.offsetWidth);
@@ -65,6 +39,3 @@
         this.style.top = Math.max(0, y) + 'px';
     });
 </script>
-
-</body>
-</html>
