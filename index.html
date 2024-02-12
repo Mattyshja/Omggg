@@ -3,7 +3,45 @@
 <head>
     <title>San Valentín</title>
     <style>
-        /* ... tus otros estilos ... */
+        body {
+            background-color: #FFEEF0; /* Fondo de color #FFEEF0 */
+        }
+
+        .button {
+            display: inline-block;
+            padding: 30px 60px; /* Botones aún más grandes */
+            font-size: 35px; /* Texto de los botones aún más grande */
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+            margin: 20px; /* Más espacio entre los botones */
+        }
+
+        .button:hover {background-color: #3e8e41}
+
+        .button:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh; /* Contenido aún más arriba */
+            flex-direction: column;
+        }
+
+        h2 {
+            font-size: 40px; /* Texto del encabezado aún más grande */
+            margin: 10px; /* Menos espacio entre los renglones del texto */
+        }
 
         /* Agrega esta regla para la animación */
         @keyframes latido {
@@ -35,7 +73,7 @@
     });
 
     // Palabras que aparecerán en el botón "No"
-    var palabras = ["Seguro?", "ish", "Y si te arrepientes?", "cállate", "maldito", "todos iguales", "di q sii", "YAAAA", "PIÉNSALO BIEN", "sorettete", "hdtm", "Ve cómo eres 💔", "yo que te quería tanto", "Q desgraciado", "Porq no?", "Muy seguro?"];
+    var palabras = ["Seguro?", "ish", "Y si te arrepientes?", "cállate", "maldito", "todos iguales", "di q sii", "YAAAA", "PIÉNSALO BIEN", "sorettete", "hdtm", "Ve cómo eres 💔", "yo que te quería tanto"];
     var indiceAnterior = -1;
 
     // Cuando el usuario intenta hacer clic en "No"
