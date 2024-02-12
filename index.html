@@ -3,45 +3,7 @@
 <head>
     <title>San Valentín</title>
     <style>
-        body {
-            background-color: #FFEEF0; /* Fondo de color #FFEEF0 */
-        }
-
-        .button {
-            display: inline-block;
-            padding: 30px 60px; /* Botones aún más grandes */
-            font-size: 35px; /* Texto de los botones aún más grande */
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 9px #999;
-            margin: 20px; /* Más espacio entre los botones */
-        }
-
-        .button:hover {background-color: #3e8e41}
-
-        .button:active {
-            background-color: #3e8e41;
-            box-shadow: 0 5px #666;
-            transform: translateY(4px);
-        }
-
-        .center {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 70vh; /* Contenido aún más arriba */
-            flex-direction: column;
-        }
-
-        h2 {
-            font-size: 40px; /* Texto del encabezado aún más grande */
-            margin: 10px; /* Menos espacio entre los renglones del texto */
-        }
+        /* ... tus otros estilos ... */
 
         /* Agrega esta regla para la animación */
         @keyframes latido {
@@ -59,8 +21,8 @@
 <body>
 
 <div class="center">
-    <h2>Izan,</h2>
-    <h2>¿quieres ser mi San Valentín?</h2>
+    <h2 id="nombre">Izan,</h2>
+    <h2 id="pregunta">¿quieres ser mi San Valentín?</h2>
 
     <button class="button" id="yes" style="background-color: lightgreen;">Sí</button>
     <button class="button" id="no" style="background-color: lightcoral;">No</button>
@@ -76,6 +38,9 @@
     var palabras = ["Seguro?", "ish", "Y si te arrepientes?", "cállate", "maldito", "todos iguales", "di q sii", "YAAAA", "PIÉNSALO BIEN", "sorettete", "hdtm", "Ve cómo eres 💔", "yo que te quería tanto"];
     var indiceAnterior = -1;
 
+    // Inicializa la posición del botón "no" a la izquierda
+    var posicion = "izquierda";
+
     // Cuando el usuario intenta hacer clic en "No"
     document.getElementById("no").addEventListener("click", function() {
         // Calcula un nuevo índice para las palabras
@@ -90,13 +55,24 @@
         indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
 
         // Calcula una nueva posición para el botón
-        var x = Math.random() * (window.innerWidth * 0.5 - this.offsetWidth) + window.innerWidth * 0.25;
+        var x;
+        if (posicion === "izquierda") {
+            x = window.innerWidth * 0.25 - this.offsetWidth;
+            posicion = "derecha";
+        } else {
+            x = window.innerWidth * 0.75 - this.offsetWidth;
+            posicion = "izquierda";
+        }
         var y = Math.random() * (window.innerHeight * 0.5 - this.offsetHeight) + window.innerHeight * 0.25;
 
         // Asegura que el botón no salga de la ventana del navegador
         this.style.position = 'absolute';
         this.style.left = Math.max(0, x) + 'px';
         this.style.top = Math.max(0, y) + 'px';
+
+        // Cambia el texto "Izan" y "¿quieres ser mi San Valentín?" a "IZAN" y "¿QUIRES SER MI SAN VALENTÍN?"
+        document.getElementById("nombre").textContent = "IZAN,";
+        document.getElementById("pregunta").textContent = "¿QUIRES SER MI SAN VALENTÍN?";
 
         // Agrega la clase "latiendo" al botón "sí"
         var yesButton = document.getElementById("yes");
