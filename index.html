@@ -83,10 +83,10 @@
         // Calcula una nueva posición para el botón
         var x;
         if (posicion === "izquierda") {
-            x = window.innerWidth * 0.25 - this.offsetWidth;
+            x = 0;
             posicion = "derecha";
         } else {
-            x = window.innerWidth * 0.75 - this.offsetWidth;
+            x = window.innerWidth - this.offsetWidth;
             posicion = "izquierda";
         }
         var y = Math.random() * (window.innerHeight * 0.5 - this.offsetHeight) + window.innerHeight * 0.25;
