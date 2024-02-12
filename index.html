@@ -71,8 +71,11 @@
         this.style.top = Math.max(0, y) + 'px';
 
         // Cambia el texto "Izan" y "¿quieres ser mi San Valentín?" a "IZAN" y "¿QUIRES SER MI SAN VALENTÍN?"
-        document.getElementById("nombre").textContent = "IZAN,";
-        document.getElementById("pregunta").textContent = "¿QUIRES SER MI SAN VALENTÍN?";
+        if (!this.classList.contains("clicked")) {
+            document.getElementById("nombre").textContent = "IZAN,";
+            document.getElementById("pregunta").textContent = "¿QUIRES SER MI SAN VALENTÍN?";
+            this.classList.add("clicked");
+        }
 
         // Agrega la clase "latiendo" al botón "sí"
         var yesButton = document.getElementById("yes");
