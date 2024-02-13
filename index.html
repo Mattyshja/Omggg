@@ -48,7 +48,7 @@
 
 <div class="center">
     <h2>Izan,</h2>
-    <h2>¿quieres ser mi San Valentín?</h2>
+    <h2>¿Quieres ser mi San Valentín?</h2>
 
     <button class="button" id="yes" style="background-color: lightgreen;">Sí</button>
     <button class="button" id="no" style="background-color: lightcoral;">No</button>
@@ -62,4 +62,33 @@
 
     // Palabras que aparecerán en el botón "No"
     var palabras = ["Seguro?", "ish", "Y si te arrepientes?", "cállate", "maldito", "todos iguales", "di q sii", "YAAAA", "PIÉNSALO BIEN", "sorettete", "hdtm", "Ve cómo eres 💔", "yo que te quería tanto", "🖕🖕🖕", "Porq no?", "Muy seguro?" ];
-    var indiceAnt
+    var indiceAnterior = -1;
+
+    // Cuando el usuario intenta hacer clic en "No"
+    document.getElementById("no").addEventListener("mouseover", function() {
+        // Calcula un nuevo índice para las palabras
+        var nuevoIndice;
+        do {
+            nuevoIndice = Math.floor(Math.random() * palabras.length);
+        } while (nuevoIndice == indiceAnterior); // Asegura que la palabra no se repita seguida
+
+        // Cambia el texto del botón "No"
+        this.textContent = palabras[nuevoIndice];
+
+        indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
+    });
+
+    document.getElementById("no").addEventListener("mouseover", function() {
+        // Calcula una nueva posición para el botón
+        var x = Math.random() * (window.innerWidth - this.offsetWidth);
+        var y = Math.random() * (window.innerHeight - this.offsetHeight);
+
+        // Asegura que el botón no salga de la ventana del navegador
+        this.style.position = 'absolute';
+        this.style.left = Math.max(0, x) + 'px';
+        this.style.top = Math.max(0, y) + 'px';
+    });
+</script>
+
+</body>
+</html>
