@@ -83,10 +83,10 @@
         // Calcula una nueva posición para el botón
         var x;
         if (posicion === "izquierda") {
-            x = this.offsetLeft - 5; // Mueve el botón 5px a la izquierda
+            x = 0;
             posicion = "derecha";
         } else {
-            x = this.offsetLeft + 5; // Mueve el botón 5px a la derecha
+            x = window.innerWidth - this.offsetWidth;
             posicion = "izquierda";
         }
         var y = this.offsetTop;
