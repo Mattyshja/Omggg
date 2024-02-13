@@ -83,10 +83,10 @@
         // Calcula una nueva posición para el botón
         var x;
         if (posicion === "izquierda") {
-            x = 0;
+            x = this.offsetLeft - 5; // Mueve el botón 5px a la izquierda
             posicion = "derecha";
         } else {
-            x = window.innerWidth - this.offsetWidth;
+            x = this.offsetLeft + 5; // Mueve el botón 5px a la derecha
             posicion = "izquierda";
         }
         var y = this.offsetTop;
@@ -94,7 +94,7 @@
         // Asegura que el botón no salga de la ventana del navegador
         this.style.position = 'absolute';
         this.style.left = Math.max(0, x) + 'px';
-        this.style.top = Math.max(0, y) + 'px';
+        this.style.top = y + 'px'; // Mantiene la posición vertical del botón
 
         // Cambia el texto "Izan" y "¿quieres ser mi San Valentín?" a "IZAN" y "¿QUIRES SER MI SAN VALENTÍN?"
         if (!this.classList.contains("clicked")) {
