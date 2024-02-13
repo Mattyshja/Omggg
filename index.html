@@ -3,52 +3,14 @@
 <head>
     <title>San Valentín</title>
     <style>
-        body {
-            background-color: #FFEEF0; /* Fondo de color #FFEEF0 */
-        }
-
-        .button {
-            display: inline-block;
-            padding: 30px 60px; /* Botones aún más grandes */
-            font-size: 35px; /* Texto de los botones aún más grande */
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 9px #999;
-            margin: 20px; /* Más espacio entre los botones */
-        }
-
-        .button:hover {background-color: #3e8e41}
-
-        .button:active {
-            background-color: #3e8e41;
-            box-shadow: 0 5px #666;
-            transform: translateY(4px);
-        }
-
-        .center {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 70vh; /* Contenido aún más arriba */
-            flex-direction: column;
-        }
-
-        h2 {
-            font-size: 40px; /* Texto del encabezado aún más grande */
-            margin: 10px; /* Menos espacio entre los renglones del texto */
-        }
+        /* ... tus estilos ... */
     </style>
 </head>
 <body>
 
 <div class="center">
     <h2>Izan,</h2>
-    <h2>¿Quieres ser mi San Valentín?</h2>
+    <h2 id="question">¿Quieres ser mi San Valentín?</h2>
 
     <button class="button" id="yes" style="background-color: lightgreen;">Sí</button>
     <button class="button" id="no" style="background-color: lightcoral;">No</button>
@@ -63,6 +25,7 @@
     // Palabras que aparecerán en el botón "No"
     var palabras = ["Seguro?", "ish", "Y si te arrepientes?", "cállate", "maldito", "todos iguales", "di q sii", "YAAAA", "PIÉNSALO BIEN", "sorettete", "hdtm", "Ve cómo eres 💔", "yo que te quería tanto", "🖕🖕🖕", "Porq no?", "Muy seguro?" ];
     var indiceAnterior = -1;
+    var contadorNo = 0; // Nuevo contador
 
     // Cuando el usuario intenta hacer clic en "No"
     document.getElementById("no").addEventListener("mouseover", function() {
@@ -76,12 +39,16 @@
         this.textContent = palabras[nuevoIndice];
 
         indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
-    });
 
-    // Si el botón "No" se ha presionado una vez, cambia el texto de la pregunta
+        // Si el botón "No" se ha presionado una vez, cambia el texto de la pregunta
         if (contadorNo == 1) {
             document.getElementById("question").textContent = "¿Quieres ser mi San Valentín...?";
         }
+    });
+
+    document.getElementById("no").addEventListener("click", function() {
+        // Incrementa el contador cada vez que se presiona el botón "No"
+        contadorNo++;
     });
 
     document.getElementById("no").addEventListener("mouseover", function() {
