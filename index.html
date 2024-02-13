@@ -47,8 +47,8 @@
 <body>
 
 <div class="center">
-    <h2 id="nombre">Izan,</h2>
-    <h2 id="pregunta">¿quieres ser mi San Valentín?</h2>
+    <h2>Izan,</h2>
+    <h2>¿quieres ser mi San Valentín...?</h2>
 
     <button class="button" id="yes" style="background-color: lightgreen;">Sí</button>
     <button class="button" id="no" style="background-color: lightcoral;">No</button>
@@ -64,9 +64,6 @@
     var palabras = ["Seguro?", "ish", "Y si te arrepientes?", "cállate", "maldito", "todos iguales", "di q sii", "YAAAA", "PIÉNSALO BIEN", "sorettete", "hdtm", "Ve cómo eres 💔", "yo que te quería tanto"];
     var indiceAnterior = -1;
 
-    // Inicializa la posición del botón "no" a la izquierda
-    var posicion = "izquierda";
-
     // Cuando el usuario intenta hacer clic en "No"
     document.getElementById("no").addEventListener("click", function() {
         // Calcula un nuevo índice para las palabras
@@ -76,32 +73,20 @@
         } while (nuevoIndice == indiceAnterior); // Asegura que la palabra no se repita seguida
 
         // Cambia el texto del botón "No"
-        this.textContent = palabras[nuevoIndice];
+        this.textContent = palabras[nuevoIndice] + "...";
 
         indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
+    });
 
+    document.getElementById("no").addEventListener("mousemove", function() {
         // Calcula una nueva posición para el botón
-        var x;
-        if (posicion === "izquierda") {
-            x = this.offsetLeft - 50; // Mueve el botón 50px a la izquierda
-            posicion = "derecha";
-        } else {
-            x = this.offsetLeft + 50; // Mueve el botón 50px a la derecha
-            posicion = "izquierda";
-        }
-        var y = this.offsetTop;
+        var x = Math.random() * (window.innerWidth - this.offsetWidth);
+        var y = Math.random() * (window.innerHeight - this.offsetHeight);
 
         // Asegura que el botón no salga de la ventana del navegador
         this.style.position = 'absolute';
         this.style.left = Math.max(0, x) + 'px';
-        this.style.top = y + 'px'; // Mantiene la posición vertical del botón
-
-        // Cambia el texto "Izan" y "¿quieres ser mi San Valentín?" a "Izan" y "¿quires ser mi San Valentín...?"
-        if (!this.classList.contains("clicked")) {
-            document.getElementById("nombre").textContent = "Izan,";
-            document.getElementById("pregunta").textContent = "¿quires ser mi San Valentín...?";
-            this.classList.add("clicked");
-        }
+        this.style.top = Math.max(0, y) + 'px';
     });
 </script>
 
