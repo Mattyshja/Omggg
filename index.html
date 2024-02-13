@@ -9,8 +9,8 @@
 <body>
 
 <div class="center">
-    <h2 id="question">Izan,</h2>
-    <h2 id="valentine">¿quieres ser mi San Valentín?</h2>
+    <h2>Izan,</h2>
+    <h2>¿quieres ser mi San Valentín?</h2>
 
     <button class="button" id="yes" style="background-color: lightgreen;">Sí</button>
     <button class="button" id="no" style="background-color: lightcoral;">No</button>
@@ -25,7 +25,6 @@
     // Palabras que aparecerán en el botón "No"
     var palabras = ["Seguro?", "ish", "Y si te arrepientes?", "cállate", "maldito", "todos iguales", "di q sii", "YAAAA", "PIÉNSALO BIEN", "sorettete", "hdtm", "Ve cómo eres 💔", "yo que te quería tanto"];
     var indiceAnterior = -1;
-    var contador = 0; // Agrega un contador
 
     // Cuando el usuario intenta hacer clic en "No"
     document.getElementById("no").addEventListener("mouseover", function() {
@@ -39,12 +38,6 @@
         this.textContent = palabras[nuevoIndice];
 
         indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
-
-        // Si es la primera vez que el usuario intenta hacer clic en "No", cambia el texto
-        if (contador === 0) {
-            document.getElementById("valentine").textContent = "¿Quieres ser mi San Valentín...?";
-        }
-        contador++; // Incrementa el contador
     });
 
     document.getElementById("no").addEventListener("mouseover", function() {
