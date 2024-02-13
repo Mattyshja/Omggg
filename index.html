@@ -47,8 +47,8 @@
 <body>
 
 <div class="center">
-    <h2>Izan,</h2>
-    <h2 id="message">¿Quieres ser mi San Valentín?</h2>
+    <h2 id="nombre">Izan,</h2>
+    <h2 id="pregunta">¿quieres ser mi San Valentín?</h2>
 
     <button class="button" id="yes" style="background-color: lightgreen;">Sí</button>
     <button class="button" id="no" style="background-color: lightcoral;">No</button>
@@ -57,20 +57,20 @@
 <script>
     var isFirstNoClick = true;
 
-    // Palabras que aparecerán en el botón "No"
-    var palabras = ["Seguro?", "ish", "Y si te arrepientes?", "cállate", "maldito", "todos iguales", "di q sii", "YAAAA", "PIÉNSALO BIEN", "sorettete", "hdtm", "Ve cómo eres 💔", "yo que te quería tanto", "no hay vuelta atrás eh ", "q desgraciado", "Porq no?", "Muy seguro?"];
-    var indiceAnterior = -1;
-
     // Función para mostrar el aviso al hacer clic en "Sí"
     document.getElementById("yes").addEventListener("click", function() {
         alert("Ush, eres mi novio, obvio tenías que decir que sí 🙄 en fin, feliz 14 de febrero, teamo 🩷");
     });
 
+    // Palabras que aparecerán en el botón "No"
+    var palabras = ["Seguro?", "ish", "Y si te arrepientes?", "cállate", "maldito", "todos iguales", "di q sii", "YAAAA", "PIÉNSALO BIEN", "sorettete", "hdtm", "Ve cómo eres 💔", "yo que te quería tanto"];
+    var indiceAnterior = -1;
+
     // Cuando el usuario intenta hacer clic en "No"
     document.getElementById("no").addEventListener("click", function() {
         // Cambia el texto del mensaje solo en el primer clic en "No"
         if (isFirstNoClick) {
-            document.getElementById("message").textContent = "¿Quieres ser mi San Valentín...?";
+            document.getElementById("pregunta").textContent = "¿quieres ser mi San Valentín...?";
             isFirstNoClick = false;
         } else {
             var nuevoIndice;
@@ -79,9 +79,16 @@
             } while (nuevoIndice == indiceAnterior); // Asegura que la palabra no se repita seguida
 
             // Cambia el texto del mensaje
-            document.getElementById("message").textContent = palabras[nuevoIndice];
+            document.getElementById("pregunta").textContent = palabras[nuevoIndice];
 
             indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
+        }
+
+        // Cambia el texto "Izan" a "Izan" y "¿quieres ser mi San Valentín?" a "Izan" y "¿quieres ser mi San Valentín...?"
+        if (!this.classList.contains("clicked")) {
+            document.getElementById("nombre").textContent = "Izan,";
+            document.getElementById("pregunta").textContent = "¿quieres ser mi San Valentín...?";
+            this.classList.add("clicked");
         }
     });
 
