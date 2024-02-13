@@ -61,6 +61,11 @@
     var palabras = ["Seguro?", "ish", "Y si te arrepientes?", "cállate", "maldito", "todos iguales", "di q sii", "YAAAA", "PIÉNSALO BIEN", "sorettete", "hdtm", "Ve cómo eres 💔", "yo que te quería tanto", "no hay vuelta atrás eh ", "q desgraciado", "Porq no?", "Muy seguro?"];
     var indiceAnterior = -1;
 
+    // Función para mostrar el aviso al hacer clic en "Sí"
+    document.getElementById("yes").addEventListener("click", function() {
+        alert("Ush, eres mi novio, obvio tenías que decir que sí 🙄 en fin, feliz 14 de febrero, teamo 🩷");
+    });
+
     // Cuando el usuario intenta hacer clic en "No"
     document.getElementById("no").addEventListener("click", function() {
         // Cambia el texto del mensaje solo en el primer clic en "No"
