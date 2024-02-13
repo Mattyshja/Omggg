@@ -3,6 +3,17 @@
 <head>
     <title>San Valentín</title>
     <style>
+        body {
+            background-color: #FFEEF0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .center {
+            text-align: center;
+        }
         /* ... */
     </style>
 </head>
@@ -26,9 +37,9 @@
     });
 
     document.getElementById("no").addEventListener("click", function() {
-        document.getElementById("pregunta").textContent = "¿quieres ser mi San Valentín?...";
-
-        if (!isFirstNoClick) {
+        if (isFirstNoClick) {
+            document.getElementById("pregunta").textContent = "¿quieres ser mi San Valentín?...";
+        } else {
             var nuevoIndice;
             do {
                 nuevoIndice = Math.floor(Math.random() * palabras.length);
