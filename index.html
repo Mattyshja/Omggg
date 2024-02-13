@@ -70,7 +70,7 @@
     document.getElementById("no").addEventListener("click", function() {
         // Cambia el texto del mensaje solo en el primer clic en "No"
         if (isFirstNoClick) {
-            document.getElementById("pregunta").textContent = "¿quieres ser mi San Valentín...?";
+            document.getElementById("pregunta").textContent += "...";
             isFirstNoClick = false;
         } else {
             var nuevoIndice;
@@ -79,16 +79,13 @@
             } while (nuevoIndice == indiceAnterior); // Asegura que la palabra no se repita seguida
 
             // Cambia el texto del mensaje
-            document.getElementById("pregunta").textContent = palabras[nuevoIndice];
+            document.getElementById("pregunta").textContent = "¿quieres ser mi San Valentín?";
+            document.getElementById("pregunta").textContent += "...";
+
+            // Cambia el texto del botón "No"
+            document.getElementById("no").textContent = palabras[nuevoIndice];
 
             indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
-        }
-
-        // Cambia el texto "Izan" a "Izan" y "¿quieres ser mi San Valentín?" a "Izan" y "¿quieres ser mi San Valentín...?"
-        if (!this.classList.contains("clicked")) {
-            document.getElementById("nombre").textContent = "Izan,";
-            document.getElementById("pregunta").textContent = "¿quieres ser mi San Valentín...?";
-            this.classList.add("clicked");
         }
     });
 
