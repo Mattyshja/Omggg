@@ -9,8 +9,8 @@
 
         .button {
             display: inline-block;
-            padding: 30px 60px; /* Botones aún más grandes */
-            font-size: 35px; /* Texto de los botones aún más grande */
+            padding: 50px 100px; /* Botones aún más grandes */
+            font-size: 50px; /* Texto de los botones aún más grande */
             cursor: pointer;
             text-align: center;
             text-decoration: none;
@@ -34,13 +34,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 70vh; /* Contenido aún más arriba */
+            height: 80vh; /* Contenido aún más arriba */
             flex-direction: column;
         }
 
         h2 {
-            font-size: 40px; /* Texto del encabezado aún más grande */
-            margin: 10px; /* Menos espacio entre los renglones del texto */
+            font-size: 60px; /* Texto del encabezado aún más grande */
+            margin: 20px; /* Menos espacio entre los renglones del texto */
         }
     </style>
 </head>
@@ -62,33 +62,4 @@
 
     // Palabras que aparecerán en el botón "No"
     var palabras = ["Seguro?", "ish", "Y si te arrepientes?", "cállate", "maldito", "todos iguales", "di q sii", "YAAAA", "PIÉNSALO BIEN", "sorettete", "hdtm", "Ve cómo eres 💔", "yo que te quería tanto", "🖕🖕🖕", "Porq no?", "Muy seguro?" ];
-    var indiceAnterior = -1;
-
-    // Cuando el usuario intenta hacer clic en "No"
-    document.getElementById("no").addEventListener("mouseover", function() {
-        // Calcula un nuevo índice para las palabras
-        var nuevoIndice;
-        do {
-            nuevoIndice = Math.floor(Math.random() * palabras.length);
-        } while (nuevoIndice == indiceAnterior); // Asegura que la palabra no se repita seguida
-
-        // Cambia el texto del botón "No"
-        this.textContent = palabras[nuevoIndice];
-
-        indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
-    });
-
-    document.getElementById("no").addEventListener("mouseover", function() {
-        // Calcula una nueva posición para el botón
-        var x = Math.random() * (window.innerWidth - this.offsetWidth);
-        var y = Math.random() * (window.innerHeight - this.offsetHeight);
-
-        // Asegura que el botón no salga de la ventana del navegador
-        this.style.position = 'absolute';
-        this.style.left = Math.max(0, x) + 'px';
-        this.style.top = Math.max(0, y) + 'px';
-    });
-</script>
-
-</body>
-</html>
+    var indiceAnt
