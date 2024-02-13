@@ -40,35 +40,44 @@
 
         h2 {
             font-size: 40px; /* Texto del encabezado aún más grande */
-            margin: 10px; /* Menos espacio entre los renglones del texto */
+            margin: 10px 0; /* Menos espacio entre los renglones del texto */
         }
     </style>
 </head>
 <body>
 
 <div class="center">
-    <h2 id="message">Izan, ¿quieres ser mi San Valentín?</h2>
+    <h2>Izan,</h2>
+    <h2 id="message">¿Quieres ser mi San Valentín?</h2>
 
     <button class="button" id="yes" style="background-color: lightgreen;">Sí</button>
     <button class="button" id="no" style="background-color: lightcoral;">No</button>
 </div>
 
 <script>
+    var isFirstNoClick = true;
+
     // Palabras que aparecerán en el botón "No"
     var palabras = ["Seguro?", "ish", "Y si te arrepientes?", "cállate", "maldito", "todos iguales", "di q sii", "YAAAA", "PIÉNSALO BIEN", "sorettete", "hdtm", "Ve cómo eres 💔", "yo que te quería tanto", "no hay vuelta atrás eh ", "q desgraciado", "Porq no?", "Muy seguro?"];
     var indiceAnterior = -1;
 
     // Cuando el usuario intenta hacer clic en "No"
     document.getElementById("no").addEventListener("click", function() {
-        var nuevoIndice;
-        do {
-            nuevoIndice = Math.floor(Math.random() * palabras.length);
-        } while (nuevoIndice == indiceAnterior); // Asegura que la palabra no se repita seguida
+        // Cambia el texto del mensaje solo en el primer clic en "No"
+        if (isFirstNoClick) {
+            document.getElementById("message").textContent = "¿Quieres ser mi San Valentín...?";
+            isFirstNoClick = false;
+        } else {
+            var nuevoIndice;
+            do {
+                nuevoIndice = Math.floor(Math.random() * palabras.length);
+            } while (nuevoIndice == indiceAnterior); // Asegura que la palabra no se repita seguida
 
-        // Cambia el texto del mensaje
-        document.getElementById("message").textContent = palabras[nuevoIndice];
+            // Cambia el texto del mensaje
+            document.getElementById("message").textContent = palabras[nuevoIndice];
 
-        indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
+            indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
+        }
     });
 
     document.getElementById("no").addEventListener("mousemove", function() {
