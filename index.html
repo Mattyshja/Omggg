@@ -3,7 +3,45 @@
 <head>
     <title>San Valentín</title>
     <style>
-        /* ... tus estilos ... */
+        body {
+            background-color: #FFEEF0; /* Fondo de color #FFEEF0 */
+        }
+
+        .button {
+            display: inline-block;
+            padding: 30px 60px; /* Botones aún más grandes */
+            font-size: 35px; /* Texto de los botones aún más grande */
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+            margin: 20px; /* Más espacio entre los botones */
+        }
+
+        .button:hover {background-color: #3e8e41}
+
+        .button:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh; /* Contenido aún más arriba */
+            flex-direction: column;
+        }
+
+        h2 {
+            font-size: 40px; /* Texto del encabezado aún más grande */
+            margin: 10px; /* Menos espacio entre los renglones del texto */
+        }
     </style>
 </head>
 <body>
@@ -40,11 +78,6 @@
 
         indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
 
-        // Si el botón "No" se ha presionado una vez, cambia el texto de la pregunta
-        if (contadorNo == 1) {
-            document.getElementById("question").textContent = "¿Quieres ser mi San Valentín...?";
-        }
-
         // Calcula una nueva posición para el botón
         var x = Math.random() * (window.innerWidth - this.offsetWidth);
         var y = Math.random() * (window.innerHeight - this.offsetHeight);
@@ -58,6 +91,11 @@
     document.getElementById("no").addEventListener("click", function() {
         // Incrementa el contador cada vez que se presiona el botón "No"
         contadorNo++;
+
+        // Si el botón "No" se ha presionado una vez, cambia el texto de la pregunta
+        if (contadorNo == 1) {
+            document.getElementById("question").textContent = "¿Quieres ser mi San Valentín...?";
+        }
     });
 </script>
 
