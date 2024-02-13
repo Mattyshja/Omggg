@@ -78,6 +78,12 @@
         indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
     });
 
+    // Si el botón "No" se ha presionado una vez, cambia el texto de la pregunta
+        if (contadorNo == 1) {
+            document.getElementById("question").textContent = "¿Quieres ser mi San Valentín...?";
+        }
+    });
+
     document.getElementById("no").addEventListener("mouseover", function() {
         // Calcula una nueva posición para el botón
         var x = Math.random() * (window.innerWidth - this.offsetWidth);
