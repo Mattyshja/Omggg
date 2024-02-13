@@ -44,14 +44,7 @@
         if (contadorNo == 1) {
             document.getElementById("question").textContent = "¿Quieres ser mi San Valentín...?";
         }
-    });
 
-    document.getElementById("no").addEventListener("click", function() {
-        // Incrementa el contador cada vez que se presiona el botón "No"
-        contadorNo++;
-    });
-
-    document.getElementById("no").addEventListener("mouseover", function() {
         // Calcula una nueva posición para el botón
         var x = Math.random() * (window.innerWidth - this.offsetWidth);
         var y = Math.random() * (window.innerHeight - this.offsetHeight);
@@ -60,6 +53,11 @@
         this.style.position = 'absolute';
         this.style.left = Math.max(0, x) + 'px';
         this.style.top = Math.max(0, y) + 'px';
+    });
+
+    document.getElementById("no").addEventListener("click", function() {
+        // Incrementa el contador cada vez que se presiona el botón "No"
+        contadorNo++;
     });
 </script>
 
