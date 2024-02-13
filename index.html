@@ -48,7 +48,7 @@
 
 <div class="center">
     <h2>Izan,</h2>
-    <h2 id="question">¿Quieres ser mi San Valentín?</h2>
+    <h2>¿quieres ser mi San Valentín?</h2>
 
     <button class="button" id="yes" style="background-color: lightgreen;">Sí</button>
     <button class="button" id="no" style="background-color: lightcoral;">No</button>
@@ -63,7 +63,6 @@
     // Palabras que aparecerán en el botón "No"
     var palabras = ["Seguro?", "ish", "Y si te arrepientes?", "cállate", "maldito", "todos iguales", "di q sii", "YAAAA", "PIÉNSALO BIEN", "sorettete", "hdtm", "Ve cómo eres 💔", "yo que te quería tanto", "🖕🖕🖕", "Porq no?", "Muy seguro?" ];
     var indiceAnterior = -1;
-    var contadorNo = 0; // Nuevo contador
 
     // Cuando el usuario intenta hacer clic en "No"
     document.getElementById("no").addEventListener("mouseover", function() {
@@ -77,7 +76,9 @@
         this.textContent = palabras[nuevoIndice];
 
         indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
+    });
 
+    document.getElementById("no").addEventListener("mouseover", function() {
         // Calcula una nueva posición para el botón
         var x = Math.random() * (window.innerWidth - this.offsetWidth);
         var y = Math.random() * (window.innerHeight - this.offsetHeight);
@@ -86,16 +87,6 @@
         this.style.position = 'absolute';
         this.style.left = Math.max(0, x) + 'px';
         this.style.top = Math.max(0, y) + 'px';
-    });
-
-    document.getElementById("no").addEventListener("click", function() {
-        // Incrementa el contador cada vez que se presiona el botón "No"
-        contadorNo++;
-
-        // Si el botón "No" se ha presionado una vez, cambia el texto de la pregunta
-        if (contadorNo == 1) {
-            document.getElementById("question").textContent = "¿Quieres ser mi San Valentín...?";
-        }
     });
 </script>
 
