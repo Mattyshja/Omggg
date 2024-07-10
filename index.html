@@ -66,6 +66,11 @@
     var palabras = ["Segura?", "😡😡😡", "Y si te arrepientes?", "😭", "mala", "todas iguales", "di q sii", "YAAAA", "PIÉNSALO BIEN", "😞", "Me imagino q te equivocaste de botón", "Ve cómo eres 💔", "yo que te quería tanto", "😾", "Porq no?", "Muy segura?" ];
     var indiceAnterior = -1;
 
+    // Posición inicial del botón "No"
+    var initialLeft = document.getElementById("no").offsetLeft;
+    var initialTop = document.getElementById("no").offsetTop;
+    var moveLeft = true;
+
     // Cuando el usuario intenta hacer clic en "No"
     document.getElementById("no").addEventListener("mouseover", function() {
         // Calcula un nuevo índice para las palabras
@@ -78,17 +83,15 @@
         this.textContent = palabras[nuevoIndice];
 
         indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
-    });
 
-    document.getElementById("no").addEventListener("mouseover", function() {
-        // Calcula una nueva posición para el botón
-        var x = Math.random() * (window.innerWidth - this.offsetWidth);
-        var y = Math.random() * (window.innerHeight - this.offsetHeight);
+        // Mueve el botón "No"
+        var newX = initialLeft + (moveLeft ? -100 : 100); // 100px a la izquierda o derecha
+        moveLeft = !moveLeft; // Alterna la dirección del movimiento
 
         // Asegura que el botón no salga de la ventana del navegador
         this.style.position = 'absolute';
-        this.style.left = Math.max(0, x) + 'px';
-        this.style.top = Math.max(0, y) + 'px';
+        this.style.left = Math.max(0, newX) + 'px';
+        this.style.top = initialTop + 'px'; // Mantiene la posición vertical
     });
 </script>
 
