@@ -72,19 +72,10 @@
     var palabras = ["Segura?", "😡😡😡", "Y si te arrepientes?", "😭", "mala", "todas iguales", "di q sii", "YAAAA", "PIÉNSALO BIEN", "😞", "Me imagino q te equivocaste de botón", "Ve cómo eres 💔", "yo que te quería tanto", "😾", "Porq no?", "Muy segura?" ];
     var indiceAnterior = -1;
 
-    // Variables para la posición inicial y alternancia del botón "No"
-    var initialTop, moveDown = true;
-
-    window.onload = function() {
-        // Posición inicial del botón "No"
-        var noButton = document.getElementById("no");
-        initialTop = noButton.offsetTop;
-
-        // Centra el botón "No" horizontalmente al cargar la página
-        noButton.style.position = 'absolute';
-        noButton.style.left = '50%';
-        noButton.style.transform = 'translateX(-50%)';
-    }
+    // Posición inicial del botón "No"
+    var initialLeft = document.getElementById("no").offsetLeft;
+    var initialTop = document.getElementById("no").offsetTop;
+    var moveLeft = true;
 
     // Cuando el usuario intenta hacer clic en "No"
     document.getElementById("no").addEventListener("mouseover", function() {
@@ -100,13 +91,13 @@
         indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
 
         // Mueve el botón "No"
-        var newY = initialTop + (moveDown ? 180 : 0); // Alterna entre la posición inicial y 180px abajo
-        moveDown = !moveDown; // Alterna la dirección del movimiento
+        var newX = initialLeft + (moveLeft ? -200 : 200); // 200px a la izquierda o derecha
+        moveLeft = !moveLeft; // Alterna la dirección del movimiento
 
-        // Asegura que el botón no salga de la ventana del navegador y mantenga el centrado
-        this.style.top = newY + 'px';
-        this.style.left = '50%';
-        this.style.transform = 'translateX(-50%)';
+        // Asegura que el botón no salga de la ventana del navegador
+        this.style.position = 'absolute';
+        this.style.left = Math.max(0, newX) + 'px';
+        this.style.top = initialTop + 'px'; // Mantiene la posición vertical
     });
 </script>
 
