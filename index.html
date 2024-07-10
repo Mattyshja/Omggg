@@ -75,7 +75,7 @@
     // Posición inicial del botón "No"
     var initialLeft = document.getElementById("no").offsetLeft;
     var initialTop = document.getElementById("no").offsetTop;
-    var moveLeft = true;
+    var moveDown = true;
 
     // Cuando el usuario intenta hacer clic en "No"
     document.getElementById("no").addEventListener("mouseover", function() {
@@ -91,13 +91,13 @@
         indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
 
         // Mueve el botón "No"
-        var newX = initialLeft + (moveLeft ? -170 : 170); // 170px a la izquierda o derecha
-        moveLeft = !moveLeft; // Alterna la dirección del movimiento
+        var newY = initialTop + (moveDown ? 180 : 0); // Alterna entre la posición inicial y 180px abajo
+        moveDown = !moveDown; // Alterna la dirección del movimiento
 
         // Asegura que el botón no salga de la ventana del navegador
         this.style.position = 'absolute';
-        this.style.left = Math.max(0, newX) + 'px';
-        this.style.top = initialTop + 'px'; // Mantiene la posición vertical
+        this.style.left = initialLeft + 'px'; // Mantiene la posición horizontal
+        this.style.top = newY + 'px';
     });
 </script>
 
