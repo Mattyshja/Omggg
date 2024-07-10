@@ -20,7 +20,6 @@
             border-radius: 15px;
             box-shadow: 0 9px #999;
             margin: 20px; /* Espacio entre los botones */
-            position: relative; /* Añadido para la posición relativa */
         }
 
         .button:hover {background-color: #3e8e41}
@@ -48,8 +47,6 @@
             margin-top: 50px; /* Ajusta esta distancia según sea necesario */
             max-width: 300px; /* Ancho máximo del botón "No" */
             white-space: normal; /* Permitir que el texto se divida en varias líneas */
-            left: 50%; /* Centro horizontalmente */
-            transform: translateX(-50%); /* Centro horizontalmente */
         }
     </style>
 </head>
@@ -75,9 +72,19 @@
     var palabras = ["Segura?", "😡😡😡", "Y si te arrepientes?", "😭", "mala", "todas iguales", "di q sii", "YAAAA", "PIÉNSALO BIEN", "😞", "Me imagino q te equivocaste de botón", "Ve cómo eres 💔", "yo que te quería tanto", "😾", "Porq no?", "Muy segura?" ];
     var indiceAnterior = -1;
 
-    // Posición inicial del botón "No"
-    var initialTop = document.getElementById("no").offsetTop;
-    var moveDown = true;
+    // Variables para la posición inicial y alternancia del botón "No"
+    var initialTop, moveDown = true;
+
+    window.onload = function() {
+        // Posición inicial del botón "No"
+        var noButton = document.getElementById("no");
+        initialTop = noButton.offsetTop;
+
+        // Centra el botón "No" horizontalmente al cargar la página
+        noButton.style.position = 'absolute';
+        noButton.style.left = '50%';
+        noButton.style.transform = 'translateX(-50%)';
+    }
 
     // Cuando el usuario intenta hacer clic en "No"
     document.getElementById("no").addEventListener("mouseover", function() {
@@ -96,11 +103,10 @@
         var newY = initialTop + (moveDown ? 180 : 0); // Alterna entre la posición inicial y 180px abajo
         moveDown = !moveDown; // Alterna la dirección del movimiento
 
-        // Asegura que el botón no salga de la ventana del navegador
-        this.style.position = 'absolute';
-        this.style.left = '50%'; // Mantiene la posición horizontal centrada
-        this.style.transform = 'translateX(-50%)'; // Mantiene la posición horizontal centrada
+        // Asegura que el botón no salga de la ventana del navegador y mantenga el centrado
         this.style.top = newY + 'px';
+        this.style.left = '50%';
+        this.style.transform = 'translateX(-50%)';
     });
 </script>
 
