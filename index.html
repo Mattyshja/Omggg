@@ -9,8 +9,8 @@
 
         .button {
             display: inline-block;
-            padding: 10px 20px; /* Botones más compactos */
-            font-size: 20px; /* Texto de los botones más pequeño */
+            padding: 30px 60px; /* Botones grandes */
+            font-size: 35px; /* Texto de los botones grande */
             cursor: pointer;
             text-align: center;
             text-decoration: none;
@@ -20,8 +20,6 @@
             border-radius: 15px;
             box-shadow: 0 9px #999;
             margin: 20px; /* Espacio entre los botones */
-            max-width: 150px; /* Ancho máximo del botón */
-            word-wrap: break-word; /* Permitir que el texto se divida en varias líneas */
         }
 
         .button:hover {background-color: #3e8e41}
@@ -41,12 +39,14 @@
         }
 
         h2 {
-            font-size: 40px; /* Texto del encabezado aún más grande */
+            font-size: 40px; /* Texto del encabezado grande */
             margin: 10px; /* Menos espacio entre los renglones del texto */
         }
 
         .no-button {
             margin-top: 50px; /* Ajusta esta distancia según sea necesario */
+            max-width: 300px; /* Ancho máximo del botón "No" */
+            white-space: normal; /* Permitir que el texto se divida en varias líneas */
         }
     </style>
 </head>
@@ -91,7 +91,7 @@
         indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
 
         // Mueve el botón "No"
-        var newX = initialLeft + (moveLeft ? -50 : 50); // 50px a la izquierda o derecha
+        var newX = initialLeft + (moveLeft ? -100 : 100); // 100px a la izquierda o derecha
         moveLeft = !moveLeft; // Alterna la dirección del movimiento
 
         // Asegura que el botón no salga de la ventana del navegador
