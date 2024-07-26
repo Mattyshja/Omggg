@@ -36,6 +36,7 @@
             align-items: center;
             height: 70vh; /* Contenido aún más arriba */
             flex-direction: column;
+            position: relative; /* Permite la posición absoluta de elementos hijos */
         }
 
         h2 {
@@ -45,6 +46,7 @@
         }
 
         .no-button {
+            position: absolute; /* Para el control preciso de la posición */
             margin-top: 50px; /* Ajusta esta distancia según sea necesario */
             max-width: 300px; /* Ancho máximo del botón "No" */
             white-space: normal; /* Permitir que el texto se divida en varias líneas */
@@ -110,7 +112,6 @@
         moveLeft = !moveLeft; // Alterna la dirección del movimiento
 
         // Asegura que el botón no salga de la ventana del navegador
-        this.style.position = 'absolute';
         this.style.left = Math.max(0, newX) + 'px';
         this.style.top = initialTop + 'px'; // Mantiene la posición vertical
     });
