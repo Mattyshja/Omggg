@@ -50,15 +50,11 @@
             white-space: normal; /* Permitir que el texto se divida en varias líneas */
         }
 
-        .image-container {
-        text-align: center;
-        margin: 5px auto; /* Reduce el margen superior para acercar la imagen */
-        }
-
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 15px;
+        .rounded-image {
+            border-radius: 20px; /* Bordes redondeados */
+            max-width: 100%; /* Asegura que la imagen no sea más ancha que su contenedor */
+            height: auto; /* Mantiene la proporción de la imagen */
+            margin: 20px 0; /* Margen alrededor de la imagen */
         }
     </style>
 </head>
@@ -69,12 +65,9 @@
     <h2>Ya cumplimos 1 mes de novios,</h2>
     <h2>así que</h2>
     <h2>Juli ¿Podemos cumplir muchos más meses juntos y durar toda la eternidad?</h2>
+    <img src="https://img.freepik.com/fotos-premium/adorable-foto-dos-nutrias-abrazadas-compartiendo-momento-puro-amor-companerismo_890802-796.jpg?w=2000" class="rounded-image" alt="Nutrias Abrazadas">
     <button class="button" id="yes" style="background-color: lightgreen;">Sí</button>
     <button class="button no-button" id="no" style="background-color: lightcoral;">No</button>
-</div>
-
-<div class="image-container">
-    <img src="https://img.freepik.com/fotos-premium/adorable-foto-dos-nutrias-abrazadas-compartiendo-momento-puro-amor-companerismo_890802-796.jpg?w=2000" alt="Nutrias abrazadas">
 </div>
 
 <script>
