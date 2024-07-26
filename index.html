@@ -36,7 +36,7 @@
             align-items: center;
             height: 70vh; /* Contenido aún más arriba */
             flex-direction: column;
-            position: relative; /* Permite la posición absoluta de elementos hijos */
+            position: relative; /* Permite la posición relativa de los elementos hijos */
         }
 
         h2 {
@@ -45,11 +45,18 @@
             text-align: center; /* Alineación central */
         }
 
+        .button-container {
+            position: relative; /* Para el control preciso del botón "No" */
+            width: 100%; /* Ancho completo para contener el botón */
+            text-align: center; /* Centra los botones dentro del contenedor */
+        }
+
         .no-button {
-            position: absolute; /* Para el control preciso de la posición */
-            margin-top: 50px; /* Ajusta esta distancia según sea necesario */
+            position: absolute; /* Controla la posición del botón "No" */
+            margin-top: 50px; /* Espacio desde el botón "Sí" */
             max-width: 300px; /* Ancho máximo del botón "No" */
             white-space: normal; /* Permitir que el texto se divida en varias líneas */
+            left: calc(50% - 150px); /* Centra el botón en su contenedor, considerando su ancho */
         }
 
         .image {
@@ -67,8 +74,10 @@
     <h2>Ya cumplimos 1 mes de novios,</h2>
     <h2>así que</h2>
     <h2>Juli ¿Podemos cumplir muchos más meses juntos y durar toda la eternidad?</h2>
-    <button class="button" id="yes" style="background-color: lightgreen;">Sí</button>
-    <button class="button no-button" id="no" style="background-color: lightcoral;">No</button>
+    <div class="button-container">
+        <button class="button" id="yes" style="background-color: lightgreen;">Sí</button>
+        <button class="button no-button" id="no" style="background-color: lightcoral;">No</button>
+    </div>
     <img src="https://img.freepik.com/fotos-premium/adorable-foto-dos-nutrias-abrazadas-compartiendo-momento-puro-amor-companerismo_890802-796.jpg?w=2000" alt="Nutrias abrazadas" class="image">
 </div>
 
@@ -90,7 +99,7 @@
     var indiceAnterior = -1;
 
     // Posición inicial del botón "No"
-    var initialLeft = document.getElementById("no").offsetLeft;
+    var initialLeft = document.querySelector(".button-container").offsetWidth / 2 - 150; // Centra el botón
     var initialTop = document.getElementById("no").offsetTop;
     var moveLeft = true;
 
@@ -108,11 +117,14 @@
         indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
 
         // Mueve el botón "No"
-        var newX = initialLeft + (moveLeft ? -200 : 200); // 200px a la izquierda o derecha
+        var containerWidth = document.querySelector(".button-container").offsetWidth;
+        var buttonWidth = this.offsetWidth;
+        var maxMovement = (containerWidth - buttonWidth) / 2; // Restricción de movimiento dentro del contenedor
+        var newX = initialLeft + (moveLeft ? -maxMovement : maxMovement); // Mueve a la izquierda o derecha dentro del contenedor
         moveLeft = !moveLeft; // Alterna la dirección del movimiento
 
-        // Asegura que el botón no salga de la ventana del navegador
-        this.style.left = Math.max(0, newX) + 'px';
+        // Asegura que el botón no salga del contenedor
+        this.style.left = Math.min(Math.max(0, newX), containerWidth - buttonWidth) + 'px';
         this.style.top = initialTop + 'px'; // Mantiene la posición vertical
     });
 </script>
