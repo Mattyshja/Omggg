@@ -38,6 +38,7 @@
             align-items: center;
             flex-direction: column;
             min-height: 100vh; /* Asegura que el contenido esté centrado verticalmente */
+            position: relative; /* Necesario para la posición absoluta del botón "No" */
         }
 
         h2 {
@@ -50,6 +51,7 @@
             margin-top: 50px; /* Ajusta esta distancia según sea necesario */
             max-width: 300px; /* Ancho máximo del botón "No" */
             white-space: normal; /* Permitir que el texto se divida en varias líneas */
+            position: absolute;
         }
 
         .rounded-image {
@@ -83,12 +85,12 @@
     var indiceAnterior = -1;
 
     // Posición inicial del botón "No"
-    var initialLeft = document.getElementById("no").offsetLeft;
-    var initialTop = document.getElementById("no").offsetTop;
+    var initialLeft = 0;
+    var initialTop = 0;
     var moveLeft = true;
 
     // Cuando el usuario intenta hacer clic en "No"
-    document.getElementById("no").addEventListener("click", function() {
+    document.getElementById("no").addEventListener("mouseover", function() {
         // Calcula un nuevo índice para las palabras
         var nuevoIndice;
         do {
@@ -101,21 +103,16 @@
         indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
 
         // Mueve el botón "No"
-        var newX = initialLeft + (moveLeft ? -200 : 200); // 200px a la izquierda o derecha
-        moveLeft = !moveLeft; // Alterna la dirección del movimiento
+        var button = document.getElementById("no");
+        var container = button.parentElement;
+        var containerWidth = container.clientWidth;
+        var containerHeight = container.clientHeight - button.offsetHeight - document.querySelector('.rounded-image').offsetHeight;
 
-        // Asegura que el botón no salga de la ventana del navegador ni se superponga con la imagen
-        var windowWidth = window.innerWidth;
-        var buttonWidth = this.offsetWidth;
-        if (newX < 0) {
-            newX = 0;
-        } else if (newX + buttonWidth > windowWidth) {
-            newX = windowWidth - buttonWidth;
-        }
+        var newX = Math.random() * (containerWidth - button.offsetWidth);
+        var newY = Math.random() * (containerHeight - button.offsetHeight);
 
-        this.style.position = 'absolute';
-        this.style.left = newX + 'px';
-        this.style.top = initialTop + 'px'; // Mantiene la posición vertical
+        button.style.left = newX + 'px';
+        button.style.top = newY + 'px';
     });
 </script>
 
