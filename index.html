@@ -77,11 +77,13 @@
 
     // Palabras que aparecerán en el botón "No"
     var palabras = ["Segura?", "😡", "Y si te arrepientes?", "😭", "Mala", "Todas iguales", "Di que sí", "YAAAA", "PENSALO BIEN", "😞", "Imagino que te equivocaste de botón", "Ve cómo eres 💔", "Yo que te quería tanto", "😾", "¿Por qué no?", "Muy segura?", "❌", "Responde bien", "OK", "Ah" ];
+    var indiceAnterior = -1;
+
     // Posición inicial del botón "No"
-    var initialLeft =
-    document.getElementById("no").offsetLeft;
+    var initialLeft = document.getElementById("no").offsetLeft;
     var initialTop = document.getElementById("no").offsetTop;
     var moveLeft = true;
+
     // Cuando el usuario intenta hacer clic en "No"
     document.getElementById("no").addEventListener("mouseover", function() {
         // Calcula un nuevo índice para las palabras
@@ -89,10 +91,12 @@
         do {
             nuevoIndice = Math.floor(Math.random() * palabras.length);
         } while (nuevoIndice == indiceAnterior); // Asegura que la palabra no se repita seguida
+
         // Cambia el texto del botón "No"
         this.textContent = palabras[nuevoIndice];
 
         indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
+
         // Mueve el botón "No"
         var newX = initialLeft + (moveLeft ? -200 : 200); // 200px a la izquierda o derecha
         moveLeft = !moveLeft; // Alterna la dirección del movimiento
@@ -102,6 +106,10 @@
         this.style.left = Math.max(0, newX) + 'px';
         this.style.top = initialTop + 'px'; // Mantiene la posición vertical
     });
+</script>
+
+</body>
+</html
 </script>
 
 </body>
