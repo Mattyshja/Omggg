@@ -84,18 +84,18 @@
     var palabras = ["Segura?", "😡", "Y si te arrepientes?", "😭", "Mala", "Todas iguales", "Di que sí", "YAAAA", "PENSALO BIEN", "😞", "Imagino que te equivocaste de botón", "Ve cómo eres 💔", "Yo que te quería tanto", "😾", "¿Por qué no?", "Muy segura?", "❌", "Responde bien", "OK", "Ah" ];
     var indiceAnterior = -1;
 
-    // Posición inicial del botón "No"
-    var initialLeft = 0;
-    var initialTop = 0;
-    var moveLeft = true;
-
     // Inicializar la posición del botón "No"
     var button = document.getElementById("no");
     var container = button.parentElement;
     var containerWidth = container.clientWidth;
     var buttonWidth = button.offsetWidth;
-    var initialLeft = (containerWidth - buttonWidth) / 2; // Centrar el botón
-    var initialTop = 0;
+    var buttonHeight = button.offsetHeight;
+    var imageHeight = document.querySelector('.rounded-image').offsetHeight;
+
+    // Posicionar el botón "No" entre el botón "Sí" y la imagen
+    var initialLeft = (containerWidth - buttonWidth) / 2; // Centrar el botón horizontalmente
+    var initialTop = 0; // Posición inicial arriba del botón "Sí"
+    var maxTop = container.clientHeight - buttonHeight - imageHeight - 20; // Limitar hasta antes de la imagen
 
     button.style.left = initialLeft + 'px';
     button.style.top = initialTop + 'px';
@@ -115,19 +115,18 @@
         var newX = initialLeft + (moveLeft ? -200 : 200); // 200px a la izquierda o derecha
         moveLeft = !moveLeft; // Alterna la dirección del movimiento
 
-        // Asegura que el botón no salga de la ventana del navegador ni se superponga con la imagen
-        var containerLeft = container.getBoundingClientRect().left;
-        var containerRight = container.getBoundingClientRect().right;
-        var buttonLeft = button.getBoundingClientRect().left;
-        var buttonRight = button.getBoundingClientRect().right;
-
-        if (buttonLeft + newX < containerLeft) {
-            newX = containerLeft - buttonLeft;
-        } else if (buttonRight + newX > containerRight) {
-            newX = containerRight - buttonRight;
+        // Asegura que el botón no salga de los límites del contenedor ni se superponga con la imagen
+        if (newX < 0) {
+            newX = 0;
+        } else if (newX + buttonWidth > containerWidth) {
+            newX = containerWidth - buttonWidth;
         }
 
+        // Asegurar que el botón no se superponga con la imagen
+        var newY = Math.random() * maxTop;
+
         button.style.left = newX + 'px';
+        button.style.top = newY + 'px';
     });
 </script>
 
