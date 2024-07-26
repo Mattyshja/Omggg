@@ -36,7 +36,6 @@
             align-items: center;
             height: 70vh; /* Contenido aún más arriba */
             flex-direction: column;
-            position: relative; /* Para el posicionamiento absoluto de los botones */
         }
 
         h2 {
@@ -46,21 +45,20 @@
         }
 
         .no-button {
-            margin-bottom: 150px; /* Separación inicial desde abajo, puede ajustarse */
+            margin-top: 50px; /* Ajusta esta distancia según sea necesario */
             max-width: 300px; /* Ancho máximo del botón "No" */
             white-space: normal; /* Permitir que el texto se divida en varias líneas */
-            position: absolute; /* Permite movimiento absoluto */
-            left: 50%; /* Centrado horizontal */
-            transform: translateX(-50%); /* Ajuste del centrado */
-            z-index: 2; /* Asegura que el botón esté en un nivel alto */
         }
 
-        .cat-image {
+        .image-container {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .image-container img {
             max-width: 100%;
             height: auto;
-            margin-top: 40px; /* Ajuste para espaciar la imagen de los botones */
-            position: relative;
-            z-index: 1; /* Imagen en un nivel bajo */
+            border-radius: 15px;
         }
     </style>
 </head>
@@ -73,9 +71,10 @@
     <h2>Juli ¿Podemos cumplir muchos más meses juntos y durar toda la eternidad?</h2>
     <button class="button" id="yes" style="background-color: lightgreen;">Sí</button>
     <button class="button no-button" id="no" style="background-color: lightcoral;">No</button>
-    
-    <!-- Imagen de nutrias -->
-    <img src="https://img.freepik.com/fotos-premium/adorable-foto-dos-nutrias-abrazadas-compartiendo-momento-puro-amor-companerismo_890802-796.jpg?w=2000" alt="Nutrias adorables" class="cat-image">
+</div>
+
+<div class="image-container">
+    <img src="https://img.freepik.com/fotos-premium/adorable-foto-dos-nutrias-abrazadas-compartiendo-momento-puro-amor-companerismo_890802-796.jpg?w=2000" alt="Nutrias abrazadas">
 </div>
 
 <script>
@@ -84,60 +83,44 @@
         alert("Gracias amor, yo sabía que sí querías 🙄 Te amo, felicidades por el primer mes y por todos los que vienen 💋");
     });
 
-    // Palabras que aparecerán en el botón "No"
-    var palabras = ["Segura?", "😡", "Y si te arrepientes?", "😭", "Mala", "Todas iguales", "Di que sí", "YAAAA", "PENSALO BIEN", "😞", "Imagino que te equivocaste de botón", "Ve cómo eres 💔", "😾", "¿Por qué no?", "Muy segura?", "❌", "Responde bien", "OK", "Ah" ];
-    var historialIndices = [-1, -1, -1, -1]; // Últimos cuatro índices usados
+    // Cuando el usuario hace clic en "No"
+    document.getElementById("no").addEventListener("click", function() {
+        // Cambia el texto del botón "No" con palabras aleatorias
+        var nuevoIndice = Math.floor(Math.random() * palabras.length);
+        document.getElementById("no").textContent = palabras[nuevoIndice];
+    });
 
-    // Referencias a los elementos
-    var noButton = document.getElementById("no");
-    var yesButton = document.getElementById("yes");
-    var catImage = document.querySelector(".cat-image");
+    // Palabras que aparecerán en el botón "No"
+    var palabras = ["Segura?", "😡", "Y si te arrepientes?", "😭", "Mala", "Todas iguales", "Di que sí", "YAAAA", "PENSALO BIEN", "😞", "Imagino que te equivocaste de botón", "Ve cómo eres 💔", "Yo que te quería tanto", "😾", "¿Por qué no?", "Muy segura?", "❌", "Responde bien", "OK", "Ah" ];
+    var indiceAnterior = -1;
 
     // Posición inicial del botón "No"
-    var initialLeft = yesButton.offsetLeft + yesButton.offsetWidth / 2 - noButton.offsetWidth / 2;
-    var initialTop = yesButton.offsetTop + yesButton.offsetHeight + 50; // Ajusta la distancia desde el botón "Sí"
+    var initialLeft = document.getElementById("no").offsetLeft;
+    var initialTop = document.getElementById("no").offsetTop;
     var moveLeft = true;
 
-    // Ajusta la posición del botón "No"
-    function updateButtonPosition() {
-        var imageTop = catImage.getBoundingClientRect().top;
-        var buttonHeight = noButton.offsetHeight;
-        var containerTop = document.querySelector(".center").getBoundingClientRect().top;
-
-        // Calcula la posición máxima y mínima vertical que mantiene al botón "No" entre el botón "Sí" y la imagen
-        var maxTop = imageTop - buttonHeight - 50; // Un poco de espacio arriba de la imagen
-        var minTop = initialTop; // Posición inicial justo debajo del botón "Sí"
-
-        // Establece la posición vertical del botón "No" para que no se mueva más allá del área permitida
-        var newTop = Math.min(maxTop, Math.max(minTop, parseFloat(noButton.style.top || initialTop)));
-
-        noButton.style.left = initialLeft + (moveLeft ? -200 : 200) + 'px';
-        noButton.style.top = newTop + 'px'; // Ajusta la posición vertical
-    }
-
     // Cuando el usuario intenta hacer clic en "No"
-    noButton.addEventListener("click", function() {
+    document.getElementById("no").addEventListener("click", function() {
         // Calcula un nuevo índice para las palabras
         var nuevoIndice;
         do {
             nuevoIndice = Math.floor(Math.random() * palabras.length);
-        } while (historialIndices.includes(nuevoIndice)); // Asegura que la palabra no se repita en los últimos cuatro
+        } while (nuevoIndice == indiceAnterior); // Asegura que la palabra no se repita seguida
 
         // Cambia el texto del botón "No"
         this.textContent = palabras[nuevoIndice];
 
-        // Actualiza el historial de índices
-        historialIndices.shift(); // Elimina el índice más antiguo
-        historialIndices.push(nuevoIndice); // Agrega el nuevo índice
+        indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
 
-        // Mueve y actualiza la posición del botón "No"
-        updateButtonPosition();
+        // Mueve el botón "No"
+        var newX = initialLeft + (moveLeft ? -200 : 200); // 200px a la izquierda o derecha
         moveLeft = !moveLeft; // Alterna la dirección del movimiento
-    });
 
-    // Inicializa la posición del botón "No"
-    noButton.style.left = initialLeft + 'px';
-    noButton.style.top = initialTop + 'px';
+        // Asegura que el botón no salga de la ventana del navegador
+        this.style.position = 'absolute';
+        this.style.left = Math.max(0, newX) + 'px';
+        this.style.top = initialTop + 'px'; // Mantiene la posición vertical
+    });
 </script>
 
 </body>
