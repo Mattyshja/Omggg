@@ -89,30 +89,45 @@
     var initialTop = 0;
     var moveLeft = true;
 
+    // Inicializar la posición del botón "No"
+    var button = document.getElementById("no");
+    var container = button.parentElement;
+    var containerWidth = container.clientWidth;
+    var buttonWidth = button.offsetWidth;
+    var initialLeft = (containerWidth - buttonWidth) / 2; // Centrar el botón
+    var initialTop = 0;
+
+    button.style.left = initialLeft + 'px';
+    button.style.top = initialTop + 'px';
+
     // Cuando el usuario intenta hacer clic en "No"
-    document.getElementById("no").addEventListener("mouseover", function() {
-        // Calcula un nuevo índice para las palabras
+    button.addEventListener("click", function() {
+        // Cambia el texto del botón "No"
         var nuevoIndice;
         do {
             nuevoIndice = Math.floor(Math.random() * palabras.length);
         } while (nuevoIndice == indiceAnterior); // Asegura que la palabra no se repita seguida
 
-        // Cambia el texto del botón "No"
-        this.textContent = palabras[nuevoIndice];
-
+        button.textContent = palabras[nuevoIndice];
         indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
 
         // Mueve el botón "No"
-        var button = document.getElementById("no");
-        var container = button.parentElement;
-        var containerWidth = container.clientWidth;
-        var containerHeight = container.clientHeight - button.offsetHeight - document.querySelector('.rounded-image').offsetHeight;
+        var newX = initialLeft + (moveLeft ? -200 : 200); // 200px a la izquierda o derecha
+        moveLeft = !moveLeft; // Alterna la dirección del movimiento
 
-        var newX = Math.random() * (containerWidth - button.offsetWidth);
-        var newY = Math.random() * (containerHeight - button.offsetHeight);
+        // Asegura que el botón no salga de la ventana del navegador ni se superponga con la imagen
+        var containerLeft = container.getBoundingClientRect().left;
+        var containerRight = container.getBoundingClientRect().right;
+        var buttonLeft = button.getBoundingClientRect().left;
+        var buttonRight = button.getBoundingClientRect().right;
+
+        if (buttonLeft + newX < containerLeft) {
+            newX = containerLeft - buttonLeft;
+        } else if (buttonRight + newX > containerRight) {
+            newX = containerRight - buttonRight;
+        }
 
         button.style.left = newX + 'px';
-        button.style.top = newY + 'px';
     });
 </script>
 
