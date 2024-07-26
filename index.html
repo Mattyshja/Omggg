@@ -45,15 +45,19 @@
         }
 
         .no-button {
-            margin-top: 50px; /* Ajusta esta distancia según sea necesario */
+            margin-top: 150px; /* Ajusta esta distancia según sea necesario */
             max-width: 300px; /* Ancho máximo del botón "No" */
             white-space: normal; /* Permitir que el texto se divida en varias líneas */
+            position: relative;
+            z-index: 2; /* Asegura que el botón esté en un nivel alto */
         }
 
         .cat-image {
             max-width: 100%;
             height: auto;
-            margin-top: 70px; /* Ajuste para espaciar la imagen de los botones */
+            margin-top: 40px; /* Ajuste para espaciar la imagen de los botones */
+            position: relative;
+            z-index: 1; /* Imagen en un nivel bajo */
         }
     </style>
 </head>
@@ -78,7 +82,7 @@
     });
 
     // Palabras que aparecerán en el botón "No"
-    var palabras = ["Segura?", "😡", "Y si te arrepientes?", "😭", "Mala", "Todas iguales", "Di que sí", "YAAAA", "PENSALO BIEN", "😞", "Imagino que te equivocaste de botón", "Ve cómo eres 💔", "Yo que te quería tanto", "😾", "¿Por qué no?", "Muy segura?", "❌", "Responde bien", "OK", "Ah" ];
+    var palabras = ["Segura?", "😡", "Y si te arrepientes?", "😭", "Mala", "Todas iguales", "Di que sí", "YAAAA", "PENSALO BIEN", "😞", "Imagino que te equivocaste de botón", "Ve cómo eres 💔", "😾", "¿Por qué no?", "Muy segura?", "❌", "Responde bien", "OK", "Ah" ];
     var historialIndices = [-1, -1, -1, -1]; // Últimos cuatro índices usados
 
     // Posición inicial del botón "No"
