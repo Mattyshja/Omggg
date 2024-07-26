@@ -48,7 +48,7 @@
             margin-bottom: 150px; /* Ajusta esta distancia según sea necesario */
             max-width: 300px; /* Ancho máximo del botón "No" */
             white-space: normal; /* Permitir que el texto se divida en varias líneas */
-            position: relative;
+            position: absolute; /* Cambiado a 'absolute' para permitir el movimiento */
             z-index: 2; /* Asegura que el botón esté en un nivel alto */
         }
 
@@ -110,9 +110,8 @@
         moveLeft = !moveLeft; // Alterna la dirección del movimiento
 
         // Asegura que el botón no salga de la ventana del navegador
-        this.style.position = 'absolute';
         this.style.left = Math.max(0, newX) + 'px';
-        this.style.top = initialTop + 'px'; // Mantiene la posición vertical
+        this.style.top = (initialTop + window.innerHeight - 150) + 'px'; // Mantiene la posición vertical desde abajo de la ventana
     });
 </script>
 
