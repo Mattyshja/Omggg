@@ -68,16 +68,9 @@
         alert("Gracias amor, yo sabía que sí querías 🙄 Te amo, felicidades por el primer mes y por todos los que vienen 💋");
     });
 
-    // Cuando el usuario hace clic en "No"
-    document.getElementById("no").addEventListener("click", function() {
-        // Cambia el texto del botón "No" con palabras aleatorias
-        var nuevoIndice = Math.floor(Math.random() * palabras.length);
-        document.getElementById("no").textContent = palabras[nuevoIndice];
-    });
-
     // Palabras que aparecerán en el botón "No"
     var palabras = ["Segura?", "😡", "Y si te arrepientes?", "😭", "Mala", "Todas iguales", "Di que sí", "YAAAA", "PENSALO BIEN", "😞", "Imagino que te equivocaste de botón", "Ve cómo eres 💔", "Yo que te quería tanto", "😾", "¿Por qué no?", "Muy segura?", "❌", "Responde bien", "OK", "Ah" ];
-    var indiceAnterior = -1;
+    var historialIndices = [-1, -1, -1, -1]; // Últimos cuatro índices usados
 
     // Posición inicial del botón "No"
     var initialLeft = document.getElementById("no").offsetLeft;
@@ -90,12 +83,14 @@
         var nuevoIndice;
         do {
             nuevoIndice = Math.floor(Math.random() * palabras.length);
-        } while (nuevoIndice == indiceAnterior); // Asegura que la palabra no se repita seguida
+        } while (historialIndices.includes(nuevoIndice)); // Asegura que la palabra no se repita en los últimos cuatro
 
         // Cambia el texto del botón "No"
         this.textContent = palabras[nuevoIndice];
 
-        indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
+        // Actualiza el historial de índices
+        historialIndices.shift(); // Elimina el índice más antiguo
+        historialIndices.push(nuevoIndice); // Agrega el nuevo índice
 
         // Mueve el botón "No"
         var newX = initialLeft + (moveLeft ? -200 : 200); // 200px a la izquierda o derecha
@@ -106,10 +101,6 @@
         this.style.left = Math.max(0, newX) + 'px';
         this.style.top = initialTop + 'px'; // Mantiene la posición vertical
     });
-</script>
-
-</body>
-</html
 </script>
 
 </body>
