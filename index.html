@@ -3,80 +3,48 @@
 <head>
     <title>♡ ♡ ♡ ♡</title>
     <style>
-        body {
-            background-color: #FFEEF0; /* Fondo de color #FFEEF0 */
-        }
+        /* Estilos CSS existentes */
 
-        .button {
-            display: inline-block;
-            padding: 30px 60px; /* Botones grandes */
-            font-size: 35px; /* Texto de los botones grande */
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 9px #999;
-            margin: 20px; /* Espacio entre los botones */
-        }
-
-        .button:hover {background-color: #3e8e41}
-
-        .button:active {
-            background-color: #3e8e41;
-            box-shadow: 0 5px #666;
-            transform: translateY(4px);
-        }
-
-        .center {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 70vh; /* Contenido aún más arriba */
-            flex-direction: column;
-        }
-
-        h2 {
-            font-size: 40px; /* Texto del encabezado grande */
-            margin: 10px; /* Menos espacio entre los renglones del texto */
-            text-align: center; /* Alineación central */
-        }
+        /* ... */
 
         .no-button {
-            margin-top: 50px; /* Ajusta esta distancia según sea necesario */
-            max-width: 300px; /* Ancho máximo del botón "No" */
-            white-space: normal; /* Permitir que el texto se divida en varias líneas */
+            /* Estilos existentes */
         }
     </style>
 </head>
 <body>
 
 <div class="center">
-    <h2>Hola amor</h2>
-    <h2>Ya cumplimos 1 mes de novios,</h2>
-    <h2>así que</h2>
-    <h2>Juli ¿Podemos cumplir muchos más meses juntos y durar toda la eternidad?</h2>
+    <!-- Contenido existente -->
+
     <button class="button" id="yes" style="background-color: lightgreen;">Sí</button>
     <button class="button no-button" id="no" style="background-color: lightcoral;">No</button>
 </div>
 
 <script>
-    // Cuando el usuario hace clic en "Sí"
+    // Evento cuando el usuario hace clic en "Sí"
     document.getElementById("yes").addEventListener("click", function() {
         alert("Gracias amor, yo sabía que sí querías 🙄 Te amo, felicidades por el primer mes y por todos los que vienen 💋");
     });
 
-    // Cuando el usuario hace clic en "No"
+    // Evento cuando el usuario hace clic en "No"
     document.getElementById("no").addEventListener("click", function() {
         // Cambia el texto del botón "No" con palabras aleatorias
         var nuevoIndice = Math.floor(Math.random() * palabras.length);
         document.getElementById("no").textContent = palabras[nuevoIndice];
+
+        // Mueve el botón "No" después de cambiar el texto
+        var newX = initialLeft + (moveLeft ? -200 : 200);
+        moveLeft = !moveLeft;
+        document.getElementById("no").style.left = Math.max(0, newX) + 'px';
     });
 
     // Palabras que aparecerán en el botón "No"
     var palabras = ["Segura?", "😡", "Y si te arrepientes?", "😭", "Mala", "Todas iguales", "Di que sí", "YAAAA", "PENSALO BIEN", "😞", "Imagino que te equivocaste de botón", "Ve cómo eres 💔", "Yo que te quería tanto", "😾", "¿Por qué no?", "Muy segura?", "❌", "Responde bien", "OK", "Ah"];
+
+    // Variables para el movimiento del botón "No"
+    var initialLeft = document.getElementById("no").offsetLeft;
+    var moveLeft = true;
 </script>
 
 </body>
