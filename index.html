@@ -46,10 +46,12 @@
         }
 
         .no-button {
-            margin-bottom: 50px; /* Separación inicial desde abajo, puede ajustarse */
+            margin-bottom: 150px; /* Separación inicial desde abajo, puede ajustarse */
             max-width: 300px; /* Ancho máximo del botón "No" */
             white-space: normal; /* Permitir que el texto se divida en varias líneas */
             position: absolute; /* Permite movimiento absoluto */
+            left: 50%; /* Centrado horizontal */
+            transform: translateX(-50%); /* Ajuste del centrado */
             z-index: 2; /* Asegura que el botón esté en un nivel alto */
         }
 
@@ -93,7 +95,7 @@
 
     // Posición inicial del botón "No"
     var initialLeft = yesButton.offsetLeft + yesButton.offsetWidth / 2 - noButton.offsetWidth / 2;
-    var initialTop = yesButton.offsetTop + yesButton.offsetHeight + 10; // Justo debajo del botón "Sí"
+    var initialTop = yesButton.offsetTop + yesButton.offsetHeight + 50; // Ajusta la distancia desde el botón "Sí"
     var moveLeft = true;
 
     // Ajusta la posición del botón "No"
@@ -102,9 +104,9 @@
         var buttonHeight = noButton.offsetHeight;
         var containerTop = document.querySelector(".center").getBoundingClientRect().top;
 
-        // Calcula la posición máxima superior que mantiene al botón "No" entre el botón "Sí" y la imagen
-        var maxTop = imageTop - buttonHeight - 20; // Un poco de espacio arriba de la imagen
-        var minTop = initialTop; // Posición justo debajo del botón "Sí"
+        // Calcula la posición máxima y mínima vertical que mantiene al botón "No" entre el botón "Sí" y la imagen
+        var maxTop = imageTop - buttonHeight - 50; // Un poco de espacio arriba de la imagen
+        var minTop = initialTop; // Posición inicial justo debajo del botón "Sí"
 
         // Establece la posición vertical del botón "No" para que no se mueva más allá del área permitida
         var newTop = Math.min(maxTop, Math.max(minTop, parseFloat(noButton.style.top || initialTop)));
