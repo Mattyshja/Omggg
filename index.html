@@ -5,6 +5,8 @@
     <style>
         body {
             background-color: #FFEEF0; /* Fondo de color #FFEEF0 */
+            margin: 0;
+            padding: 0;
         }
 
         .button {
@@ -34,8 +36,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 70vh; /* Contenido aún más arriba */
             flex-direction: column;
+            min-height: 100vh; /* Asegura que el contenido esté centrado verticalmente */
         }
 
         h2 {
@@ -76,13 +78,6 @@
         alert("Gracias amor, yo sabía que sí querías 🙄 Te amo, felicidades por el primer mes y por todos los que vienen 💋");
     });
 
-    // Cuando el usuario hace clic en "No"
-    document.getElementById("no").addEventListener("click", function() {
-        // Cambia el texto del botón "No" con palabras aleatorias
-        var nuevoIndice = Math.floor(Math.random() * palabras.length);
-        document.getElementById("no").textContent = palabras[nuevoIndice];
-    });
-
     // Palabras que aparecerán en el botón "No"
     var palabras = ["Segura?", "😡", "Y si te arrepientes?", "😭", "Mala", "Todas iguales", "Di que sí", "YAAAA", "PENSALO BIEN", "😞", "Imagino que te equivocaste de botón", "Ve cómo eres 💔", "Yo que te quería tanto", "😾", "¿Por qué no?", "Muy segura?", "❌", "Responde bien", "OK", "Ah" ];
     var indiceAnterior = -1;
@@ -109,9 +104,17 @@
         var newX = initialLeft + (moveLeft ? -200 : 200); // 200px a la izquierda o derecha
         moveLeft = !moveLeft; // Alterna la dirección del movimiento
 
-        // Asegura que el botón no salga de la ventana del navegador
+        // Asegura que el botón no salga de la ventana del navegador ni se superponga con la imagen
+        var windowWidth = window.innerWidth;
+        var buttonWidth = this.offsetWidth;
+        if (newX < 0) {
+            newX = 0;
+        } else if (newX + buttonWidth > windowWidth) {
+            newX = windowWidth - buttonWidth;
+        }
+
         this.style.position = 'absolute';
-        this.style.left = Math.max(0, newX) + 'px';
+        this.style.left = newX + 'px';
         this.style.top = initialTop + 'px'; // Mantiene la posición vertical
     });
 </script>
