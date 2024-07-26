@@ -50,13 +50,10 @@
             white-space: normal; /* Permitir que el texto se divida en varias líneas */
         }
 
-        .buttons-container {
-            margin-bottom: 50px; /* Espacio entre los botones y la imagen */
-        }
-
         .cat-image {
             max-width: 100%;
             height: auto;
+            margin-top: 70px; /* Ajuste para espaciar la imagen de los botones */
         }
     </style>
 </head>
@@ -67,11 +64,8 @@
     <h2>Ya cumplimos 1 mes de novios,</h2>
     <h2>así que</h2>
     <h2>Juli ¿Podemos cumplir muchos más meses juntos y durar toda la eternidad?</h2>
-    
-    <div class="buttons-container">
-        <button class="button" id="yes" style="background-color: lightgreen;">Sí</button>
-        <button class="button no-button" id="no" style="background-color: lightcoral;">No</button>
-    </div>
+    <button class="button" id="yes" style="background-color: lightgreen;">Sí</button>
+    <button class="button no-button" id="no" style="background-color: lightcoral;">No</button>
     
     <!-- Imagen de nutrias -->
     <img src="https://img.freepik.com/fotos-premium/adorable-foto-dos-nutrias-abrazadas-compartiendo-momento-puro-amor-companerismo_890802-796.jpg?w=2000" alt="Nutrias adorables" class="cat-image">
@@ -89,6 +83,7 @@
 
     // Posición inicial del botón "No"
     var initialLeft = document.getElementById("no").offsetLeft;
+    var initialTop = document.getElementById("no").offsetTop;
     var moveLeft = true;
 
     // Cuando el usuario intenta hacer clic en "No"
@@ -113,7 +108,7 @@
         // Asegura que el botón no salga de la ventana del navegador
         this.style.position = 'absolute';
         this.style.left = Math.max(0, newX) + 'px';
-        this.style.top = 'auto'; // Fija la posición vertical para evitar el desplazamiento vertical
+        this.style.top = initialTop + 'px'; // Mantiene la posición vertical
     });
 </script>
 
