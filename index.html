@@ -5,8 +5,6 @@
     <style>
         body {
             background-color: #FFEEF0; /* Fondo de color #FFEEF0 */
-            margin: 0;
-            padding: 0;
         }
 
         .button {
@@ -36,9 +34,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 70vh; /* Contenido aún más arriba */
             flex-direction: column;
-            min-height: 100vh; /* Asegura que el contenido esté centrado verticalmente */
-            position: relative; /* Necesario para la posición absoluta del botón "No" */
         }
 
         h2 {
@@ -51,14 +48,19 @@
             margin-top: 50px; /* Ajusta esta distancia según sea necesario */
             max-width: 300px; /* Ancho máximo del botón "No" */
             white-space: normal; /* Permitir que el texto se divida en varias líneas */
-            position: absolute;
         }
 
-        .rounded-image {
-            border-radius: 20px; /* Bordes redondeados */
-            max-width: 100%; /* Asegura que la imagen no sea más ancha que su contenedor */
+        .imagen-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        .imagen {
+            border-radius: 15px; /* Bordes redondeados */
+            margin: 10px; /* Márgenes de arriba, abajo y costados */
+            max-width: 100%; /* Ajusta el tamaño según sea necesario */
             height: auto; /* Mantiene la proporción de la imagen */
-            margin-top: 30px; /* Margen superior alrededor de la imagen */
         }
     </style>
 </head>
@@ -71,7 +73,10 @@
     <h2>Juli ¿Podemos cumplir muchos más meses juntos y durar toda la eternidad?</h2>
     <button class="button" id="yes" style="background-color: lightgreen;">Sí</button>
     <button class="button no-button" id="no" style="background-color: lightcoral;">No</button>
-    <img src="https://img.freepik.com/fotos-premium/adorable-foto-dos-nutrias-abrazadas-compartiendo-momento-puro-amor-companerismo_890802-796.jpg?w=2000" class="rounded-image" alt="Nutrias Abrazadas">
+</div>
+
+<div class="imagen-container">
+    <img src="https://img.freepik.com/fotos-premium/adorable-foto-dos-nutrias-abrazadas-compartiendo-momento-puro-amor-companerismo_890802-796.jpg?w=2000" alt="Nutrias abrazadas" class="imagen">
 </div>
 
 <script>
@@ -80,53 +85,43 @@
         alert("Gracias amor, yo sabía que sí querías 🙄 Te amo, felicidades por el primer mes y por todos los que vienen 💋");
     });
 
+    // Cuando el usuario hace clic en "No"
+    document.getElementById("no").addEventListener("click", function() {
+        // Cambia el texto del botón "No" con palabras aleatorias
+        var nuevoIndice = Math.floor(Math.random() * palabras.length);
+        document.getElementById("no").textContent = palabras[nuevoIndice];
+    });
+
     // Palabras que aparecerán en el botón "No"
     var palabras = ["Segura?", "😡", "Y si te arrepientes?", "😭", "Mala", "Todas iguales", "Di que sí", "YAAAA", "PENSALO BIEN", "😞", "Imagino que te equivocaste de botón", "Ve cómo eres 💔", "Yo que te quería tanto", "😾", "¿Por qué no?", "Muy segura?", "❌", "Responde bien", "OK", "Ah" ];
     var indiceAnterior = -1;
 
-    // Inicializar la posición del botón "No"
-    var button = document.getElementById("no");
-    var container = button.parentElement;
-    var containerWidth = container.clientWidth;
-    var buttonWidth = button.offsetWidth;
-    var buttonHeight = button.offsetHeight;
-    var imageHeight = document.querySelector('.rounded-image').offsetHeight;
-
-    // Posicionar el botón "No" entre el botón "Sí" y la imagen
-    var initialLeft = (containerWidth - buttonWidth) / 2; // Centrar el botón horizontalmente
-    var initialTop = 0; // Posición inicial arriba del botón "Sí"
-    var maxTop = container.clientHeight - buttonHeight - imageHeight - 20; // Limitar hasta antes de la imagen
-
-    button.style.left = initialLeft + 'px';
-    button.style.top = initialTop + 'px';
+    // Posición inicial del botón "No"
+    var initialLeft = document.getElementById("no").offsetLeft;
+    var initialTop = document.getElementById("no").offsetTop;
+    var moveLeft = true;
 
     // Cuando el usuario intenta hacer clic en "No"
-    button.addEventListener("click", function() {
-        // Cambia el texto del botón "No"
+    document.getElementById("no").addEventListener("click", function() {
+        // Calcula un nuevo índice para las palabras
         var nuevoIndice;
         do {
             nuevoIndice = Math.floor(Math.random() * palabras.length);
         } while (nuevoIndice == indiceAnterior); // Asegura que la palabra no se repita seguida
 
-        button.textContent = palabras[nuevoIndice];
+        // Cambia el texto del botón "No"
+        this.textContent = palabras[nuevoIndice];
+
         indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
 
         // Mueve el botón "No"
         var newX = initialLeft + (moveLeft ? -200 : 200); // 200px a la izquierda o derecha
         moveLeft = !moveLeft; // Alterna la dirección del movimiento
 
-        // Asegura que el botón no salga de los límites del contenedor ni se superponga con la imagen
-        if (newX < 0) {
-            newX = 0;
-        } else if (newX + buttonWidth > containerWidth) {
-            newX = containerWidth - buttonWidth;
-        }
-
-        // Asegurar que el botón no se superponga con la imagen
-        var newY = Math.random() * maxTop;
-
-        button.style.left = newX + 'px';
-        button.style.top = newY + 'px';
+        // Asegura que el botón no salga de la ventana del navegador
+        this.style.position = 'absolute';
+        this.style.left = Math.max(0, newX) + 'px';
+        this.style.top = initialTop + 'px'; // Mantiene la posición vertical
     });
 </script>
 
