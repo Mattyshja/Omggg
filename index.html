@@ -4,12 +4,13 @@
     <title>♡ ♡ ♡ ♡</title>
     <style>
         body {
-            background-color: #FFEEF0;
+            background-color: #FFEEF0; /* Fondo de color #FFEEF0 */
         }
+
         .button {
             display: inline-block;
-            padding: 30px 60px;
-            font-size: 35px;
+            padding: 30px 60px; /* Botones grandes */
+            font-size: 35px; /* Texto de los botones grande */
             cursor: pointer;
             text-align: center;
             text-decoration: none;
@@ -18,44 +19,47 @@
             border: none;
             border-radius: 15px;
             box-shadow: 0 9px #999;
-            margin: 20px;
+            margin: 20px; /* Espacio entre los botones */
         }
+
         .button:hover {background-color: #3e8e41}
+
         .button:active {
             background-color: #3e8e41;
             box-shadow: 0 5px #666;
             transform: translateY(4px);
         }
+
         .center {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 70vh;
+            height: 70vh; /* Contenido aún más arriba */
             flex-direction: column;
         }
+
         h2 {
-            font-size: 50px;
-            margin: 10px;
-            text-align: center;
+            font-size: 50px; /* Texto del encabezado grande */
+            margin: 10px; /* Menos espacio entre los renglones del texto */
+            text-align: center; /* Alineación central */
         }
+
         .no-button {
-            margin-top: 50px;
-            margin-bottom: 160px;
-            max-width: 190px;
-            white-space: pre-wrap;
+            margin-top: 50px; /* Ajusta esta distancia según sea necesario */
+            margin-bottom: 160px 
+            max-width: 190px; /* Ancho máximo del botón "No" */
+            white-space: pre-wrap; /* Permitir que el texto se divida en varias líneas */
         }
+
         .image-container {
             margin-top: 190px;
             text-align: center;
         }
+
         .image-container img {
             max-width: 100%;
             height: auto;
-            border-radius: 50px;
-        }
-        .audio-container {
-            margin-top: 20px;
-            text-align: center;
+            border-radius: 50px; /* Borde redondeado de 20px */
         }
     </style>
 </head>
@@ -72,43 +76,51 @@
     <div class="image-container">
         <img src="https://img.freepik.com/fotos-premium/adorable-foto-dos-nutrias-abrazadas-compartiendo-momento-puro-amor-companerismo_890802-796.jpg?w=2000" alt="Nutrias abrazadas">
     </div>
-    <div class="audio-container">
-        <audio controls>
-            <source src="https://github.com/Mattyshja/Omggg/blob/5ea0fe327168089eb2cfd87cc3a05d07441f7757/friesenjung-lyrics.mp3" type="audio/mp3">
-            Tu navegador no soporta el elemento de audio.
-        </audio>
-    </div>
 </div>
 
 <script>
+    // Cuando el usuario hace clic en "Sí"
     document.getElementById("yes").addEventListener("click", function() {
         alert("Gracias amor, yo sabía que sí querías 🙄 Te amo, felicidades por el primer mes y por todos los que vienen 💋 -Matt.");
     });
 
+    // Cuando el usuario hace clic en "No"
     document.getElementById("no").addEventListener("click", function() {
+        // Cambia el texto del botón "No" con palabras aleatorias
         var nuevoIndice = Math.floor(Math.random() * palabras.length);
         document.getElementById("no").textContent = palabras[nuevoIndice];
     });
 
-    var palabras = ["Segura?", "😡😡", "Si t arrepientes?", "😭", "Mala", "Todas iguales", "Di q sí", "YAAAA", "PENSA BIEN", "😞", "Erraste el botón", "Ve cómo eres 💔", "Yo te quería tanto", "😾", "¿Por qué no?", "Muy segura?", "❌", "Respondé bien", "OK", "🖕", "Motivos?", "Era el verde", "🙄"];
+    // Palabras que aparecerán en el botón "No"
+    var palabras = ["Segura?", "😡😡", "Si t arrepientes?", "😭", "Mala", "Todas iguales", "Di q sí", "YAAAA", "PENSA BIEN", "😞", "Erraste el botón", "Ve cómo eres 💔", "Yo te quería tanto", "😾", "¿Por qué no?", "Muy segura?", "❌", "Respondé bien", "OK", "🖕", "Motivos?", "Era el verde", "🙄" ];
     var indiceAnterior = -1;
 
+    // Posición inicial del botón "No"
+    var initialLeft = document.getElementById("no").offsetLeft;
+    var initialTop = document.getElementById("no").offsetTop;
+    var moveLeft = true;
+
+    // Cuando el usuario intenta hacer clic en "No"
     document.getElementById("no").addEventListener("click", function() {
+        // Calcula un nuevo índice para las palabras
         var nuevoIndice;
         do {
             nuevoIndice = Math.floor(Math.random() * palabras.length);
-        } while (nuevoIndice == indiceAnterior);
+        } while (nuevoIndice == indiceAnterior); // Asegura que la palabra no se repita seguida
 
+        // Cambia el texto del botón "No"
         this.textContent = palabras[nuevoIndice];
 
-        indiceAnterior = nuevoIndice;
+        indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
 
-        var newX = initialLeft + (moveLeft ? -200 : 200);
-        moveLeft = !moveLeft;
+        // Mueve el botón "No"
+        var newX = initialLeft + (moveLeft ? -200 : 200); // 200px a la izquierda o derecha
+        moveLeft = !moveLeft; // Alterna la dirección del movimiento
 
+        // Asegura que el botón no salga de la ventana del navegador
         this.style.position = 'absolute';
         this.style.left = Math.max(0, newX) + 'px';
-        this.style.top = initialTop + 'px';
+        this.style.top = initialTop + 'px'; // Mantiene la posición vertical
     });
 </script>
 
