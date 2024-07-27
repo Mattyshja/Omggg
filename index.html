@@ -46,7 +46,7 @@
 
         .no-button {
             margin-top: 50px; /* Ajusta esta distancia según sea necesario */
-            margin-bottom: 160px 
+            margin-bottom: 160px; /* Corregido para incluir el punto y coma */
             max-width: 190px; /* Ancho máximo del botón "No" */
             white-space: pre-wrap; /* Permitir que el texto se divida en varias líneas */
         }
@@ -59,7 +59,7 @@
         .image-container img {
             max-width: 100%;
             height: auto;
-            border-radius: 50px; /* Borde redondeado de 20px */
+            border-radius: 50px; /* Borde redondeado de 50px */
         }
     </style>
 </head>
@@ -123,6 +123,12 @@
         this.style.top = initialTop + 'px'; // Mantiene la posición vertical
     });
 </script>
+
+<!-- Añadir el audio -->
+<audio id="background-music" autoplay loop>
+    <source src="https://mattyshja.github.io/teamoizannn-/assets/audio/te-amo.mp3" type="audio/mp3">
+    Tu navegador no soporta la reproducción de audio.
+</audio>
 
 </body>
 </html>
