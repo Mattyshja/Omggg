@@ -46,7 +46,7 @@
 
         .no-button {
             margin-top: 50px; /* Ajusta esta distancia según sea necesario */
-            margin-bottom: 160px 
+            margin-bottom: 160px; /* Faltaba un punto y coma aquí */
             max-width: 190px; /* Ancho máximo del botón "No" */
             white-space: pre-wrap; /* Permitir que el texto se divida en varias líneas */
         }
@@ -84,16 +84,9 @@
         alert("Gracias amor, yo sabía que sí querías 🙄 Te amo, felicidades por el primer mes y por todos los que vienen 💋 -Matt.");
     });
 
-    // Cuando el usuario hace clic en "No"
-    document.getElementById("no").addEventListener("click", function() {
-        // Cambia el texto del botón "No" con palabras aleatorias
-        var nuevoIndice = Math.floor(Math.random() * palabras.length);
-        document.getElementById("no").textContent = palabras[nuevoIndice];
-    });
-
     // Palabras que aparecerán en el botón "No"
     var palabras = ["Segura?", "😡😡", "Si t arrepientes?", "😭", "Mala", "Todas iguales", "Di q sí", "YAAAA", "PENSA BIEN", "😞", "Erraste el botón", "Ve cómo eres 💔", "Yo te quería tanto", "😾", "¿Por qué no?", "Muy segura?", "❌", "Respondé bien", "OK", "🖕", "Motivos?", "Era el verde", "🙄" ];
-    var indiceAnterior = -1;
+    var colaUltimasPalabras = [];
 
     // Posición inicial del botón "No"
     var initialLeft = document.getElementById("no").offsetLeft;
@@ -102,16 +95,19 @@
 
     // Cuando el usuario intenta hacer clic en "No"
     document.getElementById("no").addEventListener("click", function() {
-        // Calcula un nuevo índice para las palabras
         var nuevoIndice;
         do {
             nuevoIndice = Math.floor(Math.random() * palabras.length);
-        } while (nuevoIndice == indiceAnterior); // Asegura que la palabra no se repita seguida
+        } while (colaUltimasPalabras.includes(nuevoIndice));
 
         // Cambia el texto del botón "No"
         this.textContent = palabras[nuevoIndice];
 
-        indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
+        // Actualiza la cola de las últimas palabras usadas
+        colaUltimasPalabras.push(nuevoIndice);
+        if (colaUltimasPalabras.length > 4) {
+            colaUltimasPalabras.shift();
+        }
 
         // Mueve el botón "No"
         var newX = initialLeft + (moveLeft ? -200 : 200); // 200px a la izquierda o derecha
