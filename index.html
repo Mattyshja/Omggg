@@ -46,7 +46,7 @@
 
         .no-button {
             margin-top: 50px; /* Ajusta esta distancia según sea necesario */
-            margin-bottom: 160px; /* Corregido para incluir el punto y coma */
+            margin-bottom: 160px; /* Corrección de estilo: faltaba el punto y coma */
             max-width: 190px; /* Ancho máximo del botón "No" */
             white-space: pre-wrap; /* Permitir que el texto se divida en varias líneas */
         }
@@ -78,17 +78,16 @@
     </div>
 </div>
 
+<!-- Añadiendo el elemento de audio -->
+<audio autoplay loop>
+    <source src="https://mattyshja.github.io/teamoizannn-/audio.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+</audio>
+
 <script>
     // Cuando el usuario hace clic en "Sí"
     document.getElementById("yes").addEventListener("click", function() {
         alert("Gracias amor, yo sabía que sí querías 🙄 Te amo, felicidades por el primer mes y por todos los que vienen 💋 -Matt.");
-    });
-
-    // Cuando el usuario hace clic en "No"
-    document.getElementById("no").addEventListener("click", function() {
-        // Cambia el texto del botón "No" con palabras aleatorias
-        var nuevoIndice = Math.floor(Math.random() * palabras.length);
-        document.getElementById("no").textContent = palabras[nuevoIndice];
     });
 
     // Palabras que aparecerán en el botón "No"
@@ -123,12 +122,6 @@
         this.style.top = initialTop + 'px'; // Mantiene la posición vertical
     });
 </script>
-
-<!-- Añadir el audio -->
-<audio id="background-music" autoplay loop>
-    <source src="https://mattyshja.github.io/teamoizannn-/assets/audio/te-amo.mp3" type="audio/mp3">
-    Tu navegador no soporta la reproducción de audio.
-</audio>
 
 </body>
 </html>
