@@ -39,7 +39,7 @@
         }
 
         h2 {
-            font-size: 48px; /* Texto del encabezado grande */
+            font-size: 50px; /* Texto del encabezado grande */
             margin: 10px; /* Menos espacio entre los renglones del texto */
             text-align: center; /* Alineación central */
         }
@@ -66,8 +66,10 @@
 <body>
 
 <div class="center">
-    <h2>Hola, amor</h2>
-    <h2>Ya cumplimos 1 mes de novios, así que, Juli ¿Podemos cumplir muchos más meses juntos y durar toda la eternidad?</h2>
+    <h2>Hola amor</h2>
+    <h2>Ya cumplimos 1 mes de novios,</h2>
+    <h2>así que</h2>
+    <h2>Juli ¿Podemos cumplir muchos más meses juntos y durar toda la eternidad?</h2>
     <button class="button" id="yes" style="background-color: lightgreen;">Sí</button>
     <button class="button no-button" id="no" style="background-color: lightcoral;">No</button>
     <div class="image-container">
@@ -111,7 +113,7 @@
         indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
 
         // Mueve el botón "No"
-        var newX = initialLeft + (moveLeft ? -200 : 200); // 200px a la izquierda o derecha
+        var newX = initialLeft + (moveLeft ? -290 : 200); // 200px a la izquierda o derecha
         moveLeft = !moveLeft; // Alterna la dirección del movimiento
 
         // Asegura que el botón no salga de la ventana del navegador
