@@ -9,8 +9,8 @@
 
         .button {
             display: inline-block;
-            padding: 30px 58px; /* Botones grandes */
-            font-size: 38px; /* Texto de los botones grande */
+            padding: 30px 60px; /* Botones grandes */
+            font-size: 35px; /* Texto de los botones grande */
             cursor: pointer;
             text-align: center;
             text-decoration: none;
@@ -39,20 +39,20 @@
         }
 
         h2 {
-            font-size: 43px; /* Texto del encabezado grande */
+            font-size: 50px; /* Texto del encabezado grande */
             margin: 10px; /* Menos espacio entre los renglones del texto */
             text-align: center; /* Alineación central */
         }
 
         .no-button {
             margin-top: 50px; /* Ajusta esta distancia según sea necesario */
-            margin-bottom: 160px; 
-            max-width: 180px; /* Ancho máximo del botón "No" */
+            margin-bottom: 160px 
+            max-width: 190px; /* Ancho máximo del botón "No" */
             white-space: pre-wrap; /* Permitir que el texto se divida en varias líneas */
         }
 
         .image-container {
-            margin-top: 200px;
+            margin-top: 190px;
             text-align: center;
         }
 
@@ -66,7 +66,7 @@
 <body>
 
 <div class="center">
-    <h2>Hola, amor</h2>
+    <h2>Hola amor</h2>
     <h2>Ya cumplimos 1 mes de novios,</h2>
     <h2>así que</h2>
     <h2>Juli ¿Podemos cumplir muchos más meses juntos y durar toda la eternidad?</h2>
@@ -80,7 +80,7 @@
 <script>
     // Cuando el usuario hace clic en "Sí"
     document.getElementById("yes").addEventListener("click", function() {
-        alert("Gracias amor, yo sabía que sí querías 🙄 Te amo, felicidades por el primer mes y por todos los que vienen 💋 -Matt.");
+        alert("Gracias amor, yo sabía que sí querías 🙄 Te amo, felicidades por el primer mes y por todos los que vienen 💋");
     });
 
     // Cuando el usuario hace clic en "No"
@@ -91,7 +91,7 @@
     });
 
     // Palabras que aparecerán en el botón "No"
-    var palabras = ["Segura?", "😡😡", "Si te arrepientes?", "😭", "Mala", "Todas iguales", "Di q sí", "YAAAA", "PENSALO BIEN", "😞", "Te equivocaste de botón", "Ve cómo eres 💔", "Yo que te quería tanto", "😾", "¿Por qué no?", "Muy segura?", "❌", "Responde bien", "OK", "Ah", "🙄", "Es el otro botón", "Es el verde", "Motivos? ];
+    var palabras = ["Segura?", "😡😡", "Si te arrepientes?", "😭", "Mala", "Todas iguales", "Di q sí", "YAAAA", "PENSALO BIEN", "😞", "Te equivocaste de botón", "Ve cómo eres 💔", "Yo q te quería tanto", "😾", "¿Por qué no?", "Muy segura?", "❌", "Responde bien", "OK", "Ah", "Motivos?", "Era el verde" ];
     var indiceAnterior = -1;
 
     // Posición inicial del botón "No"
@@ -113,7 +113,7 @@
         indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
 
         // Mueve el botón "No"
-        var newX = initialLeft + (moveLeft ? -290 : 200); // 200px a la izquierda o derecha
+        var newX = initialLeft + (moveLeft ? -200 : 200); // 200px a la izquierda o derecha
         moveLeft = !moveLeft; // Alterna la dirección del movimiento
 
         // Asegura que el botón no salga de la ventana del navegador
