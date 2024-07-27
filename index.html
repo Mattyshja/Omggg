@@ -46,7 +46,7 @@
 
         .no-button {
             margin-top: 50px; /* Ajusta esta distancia según sea necesario */
-            margin-bottom: 160px; 
+            margin-bottom: 160px 
             max-width: 190px; /* Ancho máximo del botón "No" */
             white-space: pre-wrap; /* Permitir que el texto se divida en varias líneas */
         }
@@ -80,7 +80,7 @@
 <script>
     // Cuando el usuario hace clic en "Sí"
     document.getElementById("yes").addEventListener("click", function() {
-        alert("Gracias amor, yo sabía que sí querías 🙄 Te amo, felicidades por el primer mes y por todos los que vienen 💋 Matt.");
+        alert("Gracias amor, yo sabía que sí querías 🙄 Te amo, felicidades por el primer mes y por todos los que vienen 💋");
     });
 
     // Cuando el usuario hace clic en "No"
@@ -91,7 +91,7 @@
     });
 
     // Palabras que aparecerán en el botón "No"
-    var palabras = ["Segura?", "😡😡", "Si te arrepientes?", "😭", "Mala", "Todas iguales", "Di q sí", "YAAAA", "PENSALO BIEN", "😞", "Te equivocaste de botón", "Ve cómo eres 💔", "Yo q te quería tanto", "😾", "¿Por qué no?", "Muy segura?", "❌", "Responde bien", "OK", "Ah", "Motivos?", "Era el verde" ];
+    var palabras = ["Segura?", "😡", "Y si te arrepientes?", "😭", "Mala", "Todas iguales", "Di que sí", "YAAAA", "PENSALO BIEN", "😞", "Imagino que te equivocaste de botón", "Ve cómo eres 💔", "Yo que te quería tanto", "😾", "¿Por qué no?", "Muy segura?", "❌", "Responde bien", "OK", "Ah" ];
     var indiceAnterior = -1;
 
     // Posición inicial del botón "No"
@@ -113,7 +113,7 @@
         indiceAnterior = nuevoIndice; // Guarda el índice actual para la próxima vez
 
         // Mueve el botón "No"
-        var newX = initialLeft + (moveLeft ? -290 : 200); // 200px a la izquierda o derecha
+        var newX = initialLeft + (moveLeft ? -200 : 200); // 200px a la izquierda o derecha
         moveLeft = !moveLeft; // Alterna la dirección del movimiento
 
         // Asegura que el botón no salga de la ventana del navegador
