@@ -46,10 +46,9 @@
 
         .no-button {
             margin-top: 50px; /* Ajusta esta distancia según sea necesario */
-            margin-bottom: 160px; /* Corrección de estilo: faltaba el punto y coma */
+            margin-bottom: 160px; 
             max-width: 190px; /* Ancho máximo del botón "No" */
             white-space: pre-wrap; /* Permitir que el texto se divida en varias líneas */
-            position: relative; /* Añadido para que el botón se pueda mover */
         }
 
         .image-container {
@@ -60,7 +59,7 @@
         .image-container img {
             max-width: 100%;
             height: auto;
-            border-radius: 50px; /* Borde redondeado de 50px */
+            border-radius: 50px; /* Borde redondeado de 20px */
         }
     </style>
 </head>
@@ -79,16 +78,20 @@
     </div>
 </div>
 
-<!-- Añadiendo el elemento de audio -->
-<audio autoplay loop>
-    <source src="https://drive.google.com/uc?export=download&id=11XFqhL4TrMBxzE2oEcw3xqVq9g78CRrF" type="audio/mpeg">
-    Tu navegador no soporta el elemento de audio.
-</audio>
+<!-- Agregar el elemento de audio -->
+<audio id="background-music" src="https://drive.google.com/uc?export=download&id=11XFqhL4TrMBxzE2oEcw3xqVq9g78CRrF" autoplay></audio>
 
 <script>
     // Cuando el usuario hace clic en "Sí"
     document.getElementById("yes").addEventListener("click", function() {
         alert("Gracias amor, yo sabía que sí querías 🙄 Te amo, felicidades por el primer mes y por todos los que vienen 💋 -Matt.");
+    });
+
+    // Cuando el usuario hace clic en "No"
+    document.getElementById("no").addEventListener("click", function() {
+        // Cambia el texto del botón "No" con palabras aleatorias
+        var nuevoIndice = Math.floor(Math.random() * palabras.length);
+        document.getElementById("no").textContent = palabras[nuevoIndice];
     });
 
     // Palabras que aparecerán en el botón "No"
